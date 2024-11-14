@@ -129,6 +129,9 @@ public class FirstPersonController : MonoBehaviour
     private Vector3 jointOriginalPos;
     private float timer = 0;
 
+    public GameObject Bomb; // 炸彈的預製件
+    public Transform spawnPoint;  // 炸彈生成的位置
+    public float throwForce = 10f; // 投擲的力量
     #endregion
 
     private void Awake()
@@ -200,12 +203,49 @@ public class FirstPersonController : MonoBehaviour
 
     float camRotation;
 
+    private void ExplodeAllBombs()
+    {
+        // 找到場景中所有的炸彈
+        Bomb[] allBombs = FindObjectsOfType<Bomb>();
+        foreach (Bomb bomb in allBombs)
+        {
+            if (bomb != null)
+            {
+                bomb.Explode();
+                Debug.Log("Bomb exploded!");
+            }
+        }
+    }
+
+    private void SpawnBomb()
+    {
+        // 生成炸彈並施加推力
+        GameObject newBomb = Instantiate(Bomb, spawnPoint.position, spawnPoint.rotation);
+        Rigidbody rb = newBomb.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.AddForce(spawnPoint.forward * throwForce, ForceMode.Impulse);
+        }
+    }
+
     private void Update()
     {
         #region Camera
 
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ExplodeAllBombs();
+        }
+
+        // 檢測是否按下滑鼠左鍵來生成新的炸彈
+        if (Input.GetMouseButtonDown(0))
+        {
+            SpawnBomb();
+        }
+
         // Control camera movement
-        if(cameraCanMove)
+        if (cameraCanMove)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
