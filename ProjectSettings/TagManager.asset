@@ -11,6 +11,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Wall
+  - Ground
   - 
   - 
   - 
@@ -22,12 +25,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - postProcessing
+  - dontRender
+  - bloom
   - 
   - 
   - 
