@@ -1012,9 +1012,10 @@ GameObject:
   - component: {fileID: 301744543}
   - component: {fileID: 301744548}
   - component: {fileID: 301744549}
+  - component: {fileID: 301744550}
   m_Layer: 0
-  m_Name: Plane1
-  m_TagString: SpeedBoost
+  m_Name: Plane1 plus
+  m_TagString: SpeedDash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1119,6 +1120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 1.5
+  dashForce: 3
+  dashDuration: 1
+  continuousDash: 1
+  dashCooldown: 1
 --- !u!65 &301744549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1140,6 +1145,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &301744550
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301744541}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!43 &302443746
 Mesh:
   m_ObjectHideFlags: 0
@@ -2232,7 +2264,7 @@ GameObject:
   - component: {fileID: 835777478}
   - component: {fileID: 835777479}
   m_Layer: 0
-  m_Name: Plane2
+  m_Name: Plane2 na
   m_TagString: SpeedSlow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2338,6 +2370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 1.5
+  dashForce: 10
+  dashDuration: 0.5
+  continuousDash: 0
+  dashCooldown: 1
 --- !u!65 &835777479
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5533,7 +5569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -3.09
       objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalRotation.w
