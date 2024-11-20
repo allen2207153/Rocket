@@ -788,8 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4313c0d4bdbe8d144bcebbf60de9fc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 1079968753}
 --- !u!1 &271115972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,6 +2849,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1079968753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5669187285479175130, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
+  m_PrefabInstance: {fileID: 4335893178817289517}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51633be74a659a44b91437daf9f39dbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1121822312
 Mesh:
   m_ObjectHideFlags: 0
@@ -5056,6 +5066,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 929044297907796369, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3757298091540251909, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5066,11 +5080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3757298091540251909, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.17
+      value: 2.33
       objectReference: {fileID: 0}
     - target: {fileID: 3757298091540251909, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.13
+      value: -1.71
       objectReference: {fileID: 0}
     - target: {fileID: 3757298091540251909, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5100,11 +5114,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5669187285479175130, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
+      propertyPath: explosionForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669187285479175130, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
+      propertyPath: explosionRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669187285479175130, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
+      propertyPath: upwardsModifier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8858937966269198871, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
       propertyPath: m_Name
       value: Bomb
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 929044297907796369, guid: 001716be73dc5cc4eb0dc599020198d7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -219,13 +219,22 @@ public class FirstPersonController : MonoBehaviour
 
     private void SpawnBomb()
     {
-        // 生成炸彈並施加推力
+        // 确保预制件存在
+        if (Bomb == null)
+        {
+            Debug.LogError("Bomb prefab is not assigned!");
+            return;
+        }
+
+        // 从预制件生成炸弹
         GameObject newBomb = Instantiate(Bomb, spawnPoint.position, spawnPoint.rotation);
         Rigidbody rb = newBomb.GetComponent<Rigidbody>();
         if (rb != null)
         {
+            // 给炸弹施加一个向前的力
             rb.AddForce(spawnPoint.forward * throwForce, ForceMode.Impulse);
         }
+        Debug.Log("New bomb spawned.");
     }
 
     private void Update()
@@ -233,16 +242,12 @@ public class FirstPersonController : MonoBehaviour
         #region Camera
 
 
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            ExplodeAllBombs();
-        }
 
-        // 檢測是否按下滑鼠左鍵來生成新的炸彈
-        if (Input.GetMouseButtonDown(0))
-        {
-            SpawnBomb();
-        }
+        //// 檢測是否按下滑鼠左鍵來生成新的炸彈
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    SpawnBomb();
+        //}
 
         // Control camera movement
         if (cameraCanMove)
