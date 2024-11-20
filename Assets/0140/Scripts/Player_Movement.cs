@@ -14,7 +14,7 @@ public class Player_Movement : MonoBehaviour
     public float sprintSpeed;
     public float slideSpeed;
     public float wallrunSpeed;
-    //public float climbSpeed;
+    public float climbSpeed;
     public float vaultSpeed;
     public float airMinSpeed;
 
@@ -50,8 +50,8 @@ public class Player_Movement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
-    //[Header("References")]
-    //public Climbing climbingScript;
+    [Header("References")]
+    public Climbing climbingScript;
     //private ClimbingDone climbingScriptDone;
 
     public Transform orientation;
@@ -184,11 +184,11 @@ public class Player_Movement : MonoBehaviour
         }
 
         // Mode - Climbing
-        //else if (climbing)
-        //{
-        //    state = MovementState.climbing;
-        //    desiredMoveSpeed = climbSpeed;
-        //}
+        else if (climbing)
+        {
+            state = MovementState.climbing;
+            desiredMoveSpeed = climbSpeed;
+        }
 
         // Mode - Wallrunning
         else if (wallrunning)
@@ -293,7 +293,7 @@ public class Player_Movement : MonoBehaviour
 
     private void MovePlayer()
     {
-        //if (climbingScript.exitingWall) return;
+        if (climbingScript.exitingWall) return;
         //if (climbingScriptDone.exitingWall) return;
         if (restricted) return;
 
