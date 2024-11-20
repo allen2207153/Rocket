@@ -14,7 +14,7 @@ public class Player_Movement : MonoBehaviour
     public float sprintSpeed;
     public float slideSpeed;
     public float wallrunSpeed;
-    public float climbSpeed;
+    //public float climbSpeed;
     public float vaultSpeed;
     public float airMinSpeed;
 
@@ -28,6 +28,7 @@ public class Player_Movement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
+    bool canDoubleJump;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -110,7 +111,7 @@ public class Player_Movement : MonoBehaviour
         MyInput();
         SpeedControl();
         StateHandler();
-        TextStuff();
+        //TextStuff();
 
         // handle drag
         if (grounded)
@@ -183,11 +184,11 @@ public class Player_Movement : MonoBehaviour
         }
 
         // Mode - Climbing
-        else if (climbing)
-        {
-            state = MovementState.climbing;
-            desiredMoveSpeed = climbSpeed;
-        }
+        //else if (climbing)
+        //{
+        //    state = MovementState.climbing;
+        //    desiredMoveSpeed = climbSpeed;
+        //}
 
         // Mode - Wallrunning
         else if (wallrunning)
