@@ -24,13 +24,13 @@ public class BulletManager : MonoBehaviour
     }
 
     // 毎フレーム更新される処理
-    //private void Update()
-    //{
-    //    // 発射テスト用にマウスクリックで弾を撃つ
-    //    if (Input.GetButtonDown("Fire1"))
-    //    {
-    //        ShootBullet();
-    //        Debug.Log("Success");
-    //    }
-    //}
+    private void Update()
+    {
+        // 発射テスト用にマウスクリックで弾を撃つ
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ShootBullet();
+            Debug.Log("Success");
+        }
+    }
 }

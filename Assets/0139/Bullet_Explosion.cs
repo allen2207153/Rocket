@@ -7,6 +7,9 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
     private Vector3 direction;
     private float speed;
 
+    public ExplosionEffect explosionEffect;  // 爆炸效果
+    private bool hasExploded = false;
+
     // 弾丸の方向と速度を初期化する
     public void Initialize(Vector3 direction, float speed)
     {
@@ -27,6 +30,7 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
         {
             Debug.Log("Enemy hit by FireBullet!");
             // 火炎のエフェクトや燃焼ダメージのロジックをここに追加
+            Explode();
         }
         Destroy(gameObject); // 衝突後に弾丸を破壊する
     }
@@ -43,5 +47,31 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
         
         // 壁や敵に衝突したときの処理
         OnHit(other.gameObject);
+    }
+
+    public void Explode()
+    {
+
+        // 如果已?爆炸?，?不重??行
+        if (hasExploded) return;
+
+        hasExploded = true;
+
+        // 触?爆炸效果
+        if (explosionEffect != null)
+        {
+            explosionEffect.Explode(transform.position);
+        }
+
+        // 在??之前通知 BombSpawner 清除引用
+        BombSpawner bombSpawner = FindObjectOfType<BombSpawner>();
+        if (bombSpawner != null)
+        {
+            bombSpawner.ClearCurrentBomb();
+        }
+
+        // ??炸?物体
+        Destroy(gameObject);
+        Debug.Log("Bomb exploded and destroyed.");
     }
 }
