@@ -17,7 +17,7 @@ using UnityEngine.UI;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
-
+    public BulletManager bulletManager; 
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -129,6 +129,9 @@ public class FirstPersonController : MonoBehaviour
     private Vector3 jointOriginalPos;
     private float timer = 0;
 
+    public GameObject Bomb; // 炸彈的預製件
+    public Transform spawnPoint;  // 炸彈生成的位置
+    public float throwForce = 10f; // 投擲的力量
     #endregion
 
     private void Awake()
@@ -136,7 +139,7 @@ public class FirstPersonController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         crosshairObject = GetComponentInChildren<Image>();
-
+        bulletManager = GetComponent<BulletManager>();
         // Set internal variables
         playerCamera.fieldOfView = fov;
         originalScale = transform.localScale;
@@ -200,12 +203,54 @@ public class FirstPersonController : MonoBehaviour
 
     float camRotation;
 
+    private void ExplodeAllBombs()
+    {
+        // 找到場景中所有的炸彈
+        Bomb[] allBombs = FindObjectsOfType<Bomb>();
+        foreach (Bomb bomb in allBombs)
+        {
+            if (bomb != null)
+            {
+                bomb.Explode();
+                Debug.Log("Bomb exploded!");
+            }
+        }
+    }
+
+    private void SpawnBomb()
+    {
+        // 确保预制件存在
+        if (Bomb == null)
+        {
+            Debug.LogError("Bomb prefab is not assigned!");
+            return;
+        }
+
+        // 从预制件生成炸弹
+        GameObject newBomb = Instantiate(Bomb, spawnPoint.position, spawnPoint.rotation);
+        Rigidbody rb = newBomb.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // 给炸弹施加一个向前的力
+            rb.AddForce(spawnPoint.forward * throwForce, ForceMode.Impulse);
+        }
+        Debug.Log("New bomb spawned.");
+    }
+
     private void Update()
     {
         #region Camera
 
+
+
+        //// 檢測是否按下滑鼠左鍵來生成新的炸彈
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    SpawnBomb();
+        //}
+
         // Control camera movement
-        if(cameraCanMove)
+        if (cameraCanMove)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
@@ -322,11 +367,15 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            bulletManager.ShootBullet(); 
+        }
+       
         #region Jump
 
         // Gets input and calls jump method
-        if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        if (enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
             Jump();
         }
