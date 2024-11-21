@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SpeedBoost
+  - SpeedSlow
+  - SpeedDash
   layers:
   - Default
   - TransparentFX
@@ -11,6 +14,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Wall
+  - Ground
   - 
   - 
   - 
@@ -22,12 +28,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - postProcessing
+  - dontRender
+  - bloom
   - 
   - 
   - 
