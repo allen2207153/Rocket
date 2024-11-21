@@ -1,55 +1,45 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionEffect : MonoBehaviour
 {
-    public float explosionForce = 500f;    // ”š”­‚Ì—Íi”š•—‚Ì‹­‚³j
-    public float explosionRadius = 5f;     // ”š”­‚Ì”ÍˆÍ
-    public float upwardsModifier = 1f;     // ‚’¼•ûŒü‚Ö‚Ì—Í‚Ì‹­‰»
-    public float horizontalModifier = 1f;  // …•½•ûŒü‚Ö‚Ì—Í‚Ì‹­‰»
+    public float explosionForce = 500f;   // çˆ†ç™ºã®åŠ›ï¼ˆçˆ†é¢¨ã®å¼·ã•ï¼‰
+    public float explosionRadius = 5f;    // çˆ†ç™ºã®ç¯„å›²
+    public float upwardsModifier = 1f;    // çˆ†ç‚¸æ—¶çš„å‘ä¸Šä¿®æ­£
 
-    // ”š”­‚Ìˆ—
+    // çˆ†ç™ºã®å‡¦ç†
     public void Explode(Vector3 explosionPosition)
     {
-        // ”š”­”ÍˆÍ“à‚É‚ ‚é‘S‚Ä‚ÌƒRƒ‰ƒCƒ_[‚ğæ“¾
+        // è·å–çˆ†ç‚¸èŒƒå›´å†…çš„æ‰€æœ‰ç¢°æ’å™¨
         Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius);
 
-        // ŠeƒRƒ‰ƒCƒ_[‚É‘Î‚µ‚Ä”š”­—Í‚ğ‰Á‚¦‚é
+        // å¯¹æ¯ä¸ªç¢°æ’å™¨æ·»åŠ çˆ†ç‚¸åŠ›
         foreach (Collider col in colliders)
         {
-            // Rigidbody‚ª‚ ‚ê‚Î”š”­—Í‚ğ‰Á‚¦‚é
+            // å¦‚æœæœ‰åˆšä½“ï¼Œåˆ™æ–½åŠ çˆ†ç‚¸åŠ›
             Rigidbody rb = col.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                // ”š”­ˆÊ’u‚©‚ç•¨‘Ì‚Ö‚Ì•ûŒü‚ğŒvZ
-                Vector3 direction = col.transform.position - explosionPosition;
+                // è®¡ç®—çˆ†ç‚¸ä¸­å¿ƒåˆ°ç‰©ä½“çš„æ–¹å‘
+                Vector3 direction = (col.transform.position - explosionPosition).normalized;
 
-                // …•½•ûŒü‚Ì„—Í‚Ì’Ç‰Á
-                Vector3 horizontalDirection = new Vector3(direction.x, 0, direction.z).normalized;
+                // åŸºäºçˆ†ç‚¸åŠ›ä¸ä¿®æ­£ï¼Œæ–½åŠ çˆ†ç‚¸çš„åˆåŠ›
+                Vector3 force = direction * explosionForce + Vector3.up * upwardsModifier;
 
-                // •¨‘Ì‚Æ”š”­Œ¹‚Æ‚Ì‹——£‚ğŒvZ
-                float distance = direction.magnitude;
-
-                // ‹——£‚ÉŠî‚Ã‚¢‚Ä”š”­—Í‚ğ’²®
-                float force = Mathf.Lerp(explosionForce, 0, distance / explosionRadius);
-
-                // ”š”­—Í‚ğ•¨‘Ì‚É‰Á‚¦‚éi‚’¼•ûŒü‚àl—¶j
-                rb.AddExplosionForce(force, explosionPosition, explosionRadius, upwardsModifier);
-
-                // …•½•ûŒü‚Ì„—Í‚ğ•Ê‚É‰Á‚¦‚é
-                rb.AddForce(horizontalDirection * force * horizontalModifier, ForceMode.Impulse);
+                // æ·»åŠ åŠ›åˆ°ç‰©ä½“ä¸Š
+                rb.AddForce(force, ForceMode.Impulse);
             }
         }
     }
 
-    // ƒV[ƒ“ƒrƒ…[‚Å”š”­”ÍˆÍ‚ğ•`‰æ
+    // åœ¨åœºæ™¯è§†å›¾ä¸­ç»˜åˆ¶çˆ†ç‚¸èŒƒå›´
     private void OnDrawGizmos()
     {
-        // Gizmos‚ÌF‚ğ”¼“§–¾‚ÌÔ‚Éİ’è
+        // å°†Gizmosçš„é¢œè‰²è®¾ç½®ä¸ºåŠé€æ˜çš„çº¢è‰²
         Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
 
-        // •¨‘Ì‚ÌˆÊ’u‚É”š”­”ÍˆÍ‚ğ¦‚·‰~‚ğ•`‰æ
+        // ç»˜åˆ¶çˆ†ç‚¸èŒƒå›´çš„çƒä½“
         Gizmos.DrawSphere(transform.position, explosionRadius);
     }
 }
