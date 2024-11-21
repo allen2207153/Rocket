@@ -32,6 +32,7 @@
 //        Destroy(gameObject);
 //    }
 //}
+using System.Collections;
 using UnityEngine;
 
 public class Bomb : MonoBehaviour
@@ -41,7 +42,7 @@ public class Bomb : MonoBehaviour
 
     private void Update()
     {
-        // 按下 F 键时触发爆炸
+        // 按下 G 键时触发爆炸
         if (Input.GetKeyDown(KeyCode.G))
         {
             Explode();
@@ -59,6 +60,13 @@ public class Bomb : MonoBehaviour
         if (explosionEffect != null)
         {
             explosionEffect.Explode(transform.position);
+        }
+
+        // 在销毁之前通知 BombSpawner 清除引用
+        BombSpawner bombSpawner = FindObjectOfType<BombSpawner>();
+        if (bombSpawner != null)
+        {
+            bombSpawner.ClearCurrentBomb();
         }
 
         // 销毁炸弹物体
