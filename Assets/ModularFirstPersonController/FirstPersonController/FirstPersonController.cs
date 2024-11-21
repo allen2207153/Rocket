@@ -17,7 +17,7 @@ using UnityEngine.UI;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
-
+    public BulletManager bulletManager; 
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -136,7 +136,7 @@ public class FirstPersonController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         crosshairObject = GetComponentInChildren<Image>();
-
+        bulletManager = GetComponent<BulletManager>();
         // Set internal variables
         playerCamera.fieldOfView = fov;
         originalScale = transform.localScale;
@@ -322,11 +322,15 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            bulletManager.ShootBullet(); 
+        }
+       
         #region Jump
 
         // Gets input and calls jump method
-        if(enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        if (enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
         {
             Jump();
         }
