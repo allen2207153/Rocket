@@ -43,13 +43,13 @@ public class Wall_Running : MonoBehaviour
     [Header("References")]
     public Transform orientation;
     public Player_Camera camera;
-    private Player_Movement pm;
+    private Player_Movement playermovement;
     private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pm = GetComponent<Player_Movement>();
+        playermovement = GetComponent<Player_Movement>();
     }
 
     private void Update()
@@ -60,7 +60,7 @@ public class Wall_Running : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (pm.wallrunning)
+        if (playermovement.wallrunning)
             WallRunningMovement();
     }
 
@@ -87,14 +87,14 @@ public class Wall_Running : MonoBehaviour
         // State 1 - Wallrunning
         if ((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitingWall)
         {
-            if (!pm.wallrunning)
+            if (!playermovement.wallrunning)
                 StartWallRun();
 
             // wallrun timer
             if (wallRunTimer > 0)
                 wallRunTimer -= Time.deltaTime;
 
-            if (wallRunTimer <= 0 && pm.wallrunning)
+            if (wallRunTimer <= 0 && playermovement.wallrunning)
             {
                 exitingWall = true;
                 exitWallTimer = exitWallTime;
@@ -107,7 +107,7 @@ public class Wall_Running : MonoBehaviour
         // State 2 - Exiting
         else if (exitingWall)
         {
-            if (pm.wallrunning)
+            if (playermovement.wallrunning)
                 StopWallRun();
 
             if (exitWallTimer > 0)
@@ -120,14 +120,14 @@ public class Wall_Running : MonoBehaviour
         // State 3 - None
         else
         {
-            if (pm.wallrunning)
+            if (playermovement.wallrunning)
                 StopWallRun();
         }
     }
 
     private void StartWallRun()
     {
-        pm.wallrunning = true;
+        playermovement.wallrunning = true;
 
         wallRunTimer = maxWallRunTime;
 
@@ -170,7 +170,7 @@ public class Wall_Running : MonoBehaviour
 
     private void StopWallRun()
     {
-        pm.wallrunning = false;
+        playermovement.wallrunning = false;
 
         // reset camera effects
         camera.DoFov(80f);
