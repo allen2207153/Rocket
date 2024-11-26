@@ -42,7 +42,7 @@ public class Wall_Running : MonoBehaviour
 
     [Header("References")]
     public Transform orientation;
-    public Player_Camera camera;
+    public Player_Camera playercamera;
     private Player_Movement playermovement;
     private Rigidbody rb;
 
@@ -134,9 +134,9 @@ public class Wall_Running : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         // apply camera effects
-        camera.DoFov(90f);
-        if (wallLeft) camera.DoTilt(-5f);
-        if (wallRight) camera.DoTilt(5f);
+        playercamera.DoFov(90f);
+        if (wallLeft) playercamera.DoTilt(-5f);
+        if (wallRight) playercamera.DoTilt(5f);
     }
 
     private void WallRunningMovement()
@@ -173,8 +173,8 @@ public class Wall_Running : MonoBehaviour
         playermovement.wallrunning = false;
 
         // reset camera effects
-        camera.DoFov(80f);
-        camera.DoTilt(0f);
+        playercamera.DoFov(80f);
+        playercamera.DoTilt(0f);
     }
 
     private void WallJump()
