@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionForce: 20
-  explosionRadius: 5
+  explosionRadius: 5.07
   upwardsModifier: 20
 --- !u!1 &7596543460533717245
 GameObject:
@@ -82,7 +82,7 @@ Transform:
   m_Children:
   - {fileID: 3256970115052503636}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3022395677668966060
 MeshFilter:
