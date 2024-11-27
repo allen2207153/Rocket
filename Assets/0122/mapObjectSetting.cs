@@ -10,8 +10,8 @@ public class mapObjectSetting : MonoBehaviour
     public float speedMultiplier = 1.5f;  // 1 より大きい場合は加速、1 より小さい場合は減速
 
     [Header("Dash Settings")]
-    public float dashForce = 0.5f;         // ダッシュ 
-    public float dashDuration = 0.5f;     // ダッシュ期間(時間)
+    public float dashForce = 100f;         // ダッシュ 
+    public float dashDuration = 0.2f;     // ダッシュ期間(時間)
     public bool continuousDash = false;   // ダッシュを続ける（ループ）：プレイヤーがオブジェクトに接触したら、ダッシュループする
     public float dashCooldown = 1f;       // ダッシュクールダウン(再発動時間) (連続ループモードのみ)
 
@@ -98,15 +98,16 @@ public class mapObjectSetting : MonoBehaviour
             isDashing = true;
             canDash = false;
 
+            // 今入力している移動値
+            float inputH = Input.GetAxisRaw("Horizontal");
+            float inputV = Input.GetAxisRaw("Vertical");
+
             // 今プレイヤーの方向
             Vector3 dashDirection = PlayerMovement.transform.forward;
 
-            // ダッシュなから移動禁止
-            PlayerMovement.dashing = true;
-            bool originalCanMove = !PlayerMovement.restricted;
-            PlayerMovement.restricted = true;
-
             Debug.Log($"ダッシュの力: {dashForce}");
+
+
 
             // ダッシュ
             float elapsedTime = 0f;
@@ -117,23 +118,20 @@ public class mapObjectSetting : MonoBehaviour
                 yield return null;
             }
 
-            // 元に戻す
-            PlayerMovement.dashing = false;
-            PlayerMovement.restricted = !originalCanMove;
             isDashing = false;
 
             // ダッシュなら、クールダウンを利用する
-            if (continuousDash)
-            {
-                yield return new WaitForSeconds(dashCooldown);
-                canDash = true;
-            }
+
+              if (continuousDash)
+                 {
+                     yield return new WaitForSeconds(dashCooldown);
+                      canDash = true;
+                   }
+                }
+                else
+               {
+                   Debug.LogError(" ダッシュなからプレイヤー　コンポーネント　なし！");
+                }
         }
-        else
-        {
-            Debug.LogError(" ダッシュなからプレイヤー　コンポーネント　なし！");
-        }
+
     }
-
-
-}
