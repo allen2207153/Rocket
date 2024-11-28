@@ -10,12 +10,12 @@ public class mapObjectSetting : MonoBehaviour
     public float speedMultiplier = 1.5f;  // 1 より大きい場合は加速、1 より小さい場合は減速
 
     [Header("Dash Settings")]
-    public float dashForce = 0.5f;         // ダッシュ 
-    public float dashDuration = 0.5f;     // ダッシュ期間(時間)
+    public float dashForce = 100f;         // ダッシュ 
+    public float dashDuration = 0.2f;     // ダッシュ期間(時間)
     public bool continuousDash = false;   // ダッシュを続ける（ループ）：プレイヤーがオブジェクトに接触したら、ダッシュループする
     public float dashCooldown = 1f;       // ダッシュクールダウン(再発動時間) (連続ループモードのみ)
 
-    private FirstPersonController playerController;
+    private Player_Movement PlayerMovement;
     private float originalWalkSpeed;
 
     private Rigidbody playerRigidbody;  //Rigidbodyのコンポーネント
@@ -31,37 +31,37 @@ public class mapObjectSetting : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerController = other.GetComponent<FirstPersonController>();
+            PlayerMovement = other.GetComponent<Player_Movement>();
             playerRigidbody = other.GetComponent<Rigidbody>();
 
-            if (playerController != null && playerRigidbody != null)
+            if (PlayerMovement != null && playerRigidbody != null)
             {
-                originalWalkSpeed = playerController.walkSpeed;
+                originalWalkSpeed = PlayerMovement.walkSpeed;
 
                 // 地形ラベルに基づいて加速するか減速するかを決定します
                 if (gameObject.CompareTag(SPEED_BOOST_TAG))
                 {
                     // 加速ゾーン
-                    playerController.walkSpeed *= speedMultiplier;
-                    Debug.Log($"Speed boosted to: {playerController.walkSpeed}");
+                    PlayerMovement.walkSpeed *= speedMultiplier;
+                    Debug.Log($"プレイヤー速度加速: {PlayerMovement.walkSpeed}");
                 }
                 else if (gameObject.CompareTag(SPEED_SLOW_TAG))
                 {
                     // 減速ゾーン
-                    playerController.walkSpeed *= (1f / speedMultiplier);
-                    Debug.Log($"Speed reduced to: {playerController.walkSpeed}");
+                    PlayerMovement.walkSpeed *= (1f / speedMultiplier);
+                    Debug.Log($"プレイヤー速度減速: {PlayerMovement.walkSpeed}");
                 }
 
                 else if (gameObject.CompareTag(SPEED_DASH_TAG) && !isDashing && canDash)
                 {
                     // ダッシュゾーン
                     StartCoroutine(SpeedDash());
-                    Debug.Log("Starting dash boost!");
+                    Debug.Log("ダッシュ開始！");
                 }
             }
             else
             {
-                Debug.LogWarning("Missing required components on player!"); // 
+                Debug.LogWarning("プレイヤー　コンポーネント　なし！"); // 
             }
 
         }
@@ -70,7 +70,7 @@ public class mapObjectSetting : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        // 連続スプリントモードでプレイヤーがエリア内にいる場合
+        // 連続ダッシュモードでプレイヤーがエリア内にいる場合
         if (continuousDash && other.CompareTag("Player") &&
             gameObject.CompareTag(SPEED_DASH_TAG) && !isDashing && canDash)
         {
@@ -83,86 +83,55 @@ public class mapObjectSetting : MonoBehaviour
         {
             if (other.CompareTag("Player"))
             {
-                if (playerController != null)
+                if (PlayerMovement != null)
                 {
-                    // 元の速度に戻す
-                    playerController.walkSpeed = originalWalkSpeed;
-                    Debug.Log($"Speed restored to: {originalWalkSpeed}");
+                // 元の速度に戻す
+                PlayerMovement.walkSpeed = originalWalkSpeed;
+                    Debug.Log($"元速度に戻す: {originalWalkSpeed}");
                 }
             }
         }
-
     private IEnumerator SpeedDash()
     {
-        if (playerController != null && playerRigidbody != null)
+        if (PlayerMovement != null && playerRigidbody != null)
         {
             isDashing = true;
             canDash = false;
 
+            // 今入力している移動値
+            float inputH = Input.GetAxisRaw("Horizontal");
+            float inputV = Input.GetAxisRaw("Vertical");
+
             // 今プレイヤーの方向
-            Vector3 dashDirection = playerController.transform.forward;
+            Vector3 dashDirection = PlayerMovement.transform.forward;
 
-            // 移動禁止
-            bool originalCanMove = playerController.playerCanMove;
-            playerController.playerCanMove = false;
-            Debug.Log($"Applying dash force: {dashForce}"); //
+            Debug.Log($"ダッシュの力: {dashForce}");
 
-            // スプリント elapsed
+
+
+            // ダッシュ
             float elapsedTime = 0f;
             while (elapsedTime < dashDuration)
             {
-                //  AddForce 
                 playerRigidbody.AddForce(dashDirection * dashForce, ForceMode.Impulse);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
-            // 元に戻す
-            playerController.playerCanMove = originalCanMove;
             isDashing = false;
 
-            // cooldown
-            if (continuousDash)
-            {
-                yield return new WaitForSeconds(dashCooldown);
-                canDash = true;
-            }
-        }
-        else
-        {
-            Debug.LogError("Missing player components during dash!"); // 
-        }
+            // ダッシュなら、クールダウンを利用する
 
-    }
-
-
-    //------------------TEMP---------------------
-    // エディターで領域を表示するための視覚的なキュー
-    private void OnDrawGizmos()
-        {
-            // 加速ゾーン: 緑
-            if (gameObject.CompareTag(SPEED_BOOST_TAG))
-            {
-                Gizmos.color = new Color(0f, 1f, 0f, 0.3f); // 半透明の緑
-            }
-            // 減速ゾーン: 赤
-            else if (gameObject.CompareTag(SPEED_SLOW_TAG))
-            {
-                Gizmos.color = new Color(1f, 0f, 0f, 0.3f); // 半透明の赤
-            }
-            // ダッシュゾーン: 赤
-            else if (gameObject.CompareTag(SPEED_DASH_TAG)) 
-            {
-            Gizmos.color = new Color(0f, 0f, 1f, 0.3f); // 半透明の青
+              if (continuousDash)
+                 {
+                     yield return new WaitForSeconds(dashCooldown);
+                      canDash = true;
+                   }
+                }
+                else
+               {
+                   Debug.LogError(" ダッシュなからプレイヤー　コンポーネント　なし！");
+                }
         }
 
-
-        // 描画範囲
-        Collider collider = GetComponent<Collider>();
-            if (collider != null)
-            {
-                Gizmos.matrix = transform.localToWorldMatrix;
-                Gizmos.DrawCube(Vector3.zero, Vector3.one);
-            }
-        }
     }
