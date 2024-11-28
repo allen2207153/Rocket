@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,72 +6,78 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
 {
     private Vector3 direction;
     private float speed;
-
-    public ExplosionEffect explosionEffect;  // ”šàyÁ‰Ê
     private bool hasExploded = false;
 
-    // ’eŠÛ‚Ì•ûŒü‚Æ‘¬“x‚ğ‰Šú‰»‚·‚é
+    public ExplosionEffect explosionEffect;
+    private BombSpawner bombSpawner;
+
+    private Rigidbody rb;
+
     public void Initialize(Vector3 direction, float speed)
     {
         this.direction = direction.normalized;
         this.speed = speed;
     }
 
-    // ’eŠÛ‚ÌˆÚ“®ˆ—
+    private void FixedUpdate()
+    {
+        if (!hasExploded)
+        {
+            Move();
+        }
+    }
+
     public void Move()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        rb.velocity = direction * speed;
     }
 
-    // ’eŠÛ‚ªƒ^[ƒQƒbƒg‚É–½’†‚µ‚½Û‚Ìˆ—
     public void OnHit(GameObject target)
     {
+        if (hasExploded) return;
+
         if (target.CompareTag("Wall"))
         {
-            Debug.Log("Enemy hit by FireBullet!");
-            // ‰Î‰Š‚ÌƒGƒtƒFƒNƒg‚â”RÄƒ_ƒ[ƒW‚ÌƒƒWƒbƒN‚ğ‚±‚±‚É’Ç‰Á
+            Debug.Log("Bullet hit a wall!");
             Explode();
         }
-        Destroy(gameObject); // Õ“ËŒã‚É’eŠÛ‚ğ”j‰ó‚·‚é
+
+        Destroy(gameObject);
     }
 
-    // –ˆƒtƒŒ[ƒ€A’eŠÛ‚ğˆÚ“®‚³‚¹‚é
-    private void Update()
-    {
-        Move(); // ƒtƒŒ[ƒ€‚²‚Æ‚ÉˆÚ“®ˆ—‚ğÀs
-    }
-
-    // ’eŠÛ‚ª‘¼‚ÌƒIƒuƒWƒFƒNƒg‚ÉÕ“Ë‚µ‚½Û‚Ìˆ—
     private void OnCollisionEnter(Collision other)
     {
-        
-        // •Ç‚â“G‚ÉÕ“Ë‚µ‚½‚Æ‚«‚Ìˆ—
-        OnHit(other.gameObject);
+        if (!hasExploded)
+        {
+            OnHit(other.gameObject);
+        }
     }
 
     public void Explode()
     {
-
-        // ”@‰Ê›ß?”šày?C?•sd??s
         if (hasExploded) return;
 
         hasExploded = true;
 
-        // G?”šàyÁ‰Ê
         if (explosionEffect != null)
         {
             explosionEffect.Explode(transform.position);
         }
 
-        // İ??”V‘O’Ê’m BombSpawner ´œˆø—p
-        BombSpawner bombSpawner = FindObjectOfType<BombSpawner>();
         if (bombSpawner != null)
         {
             bombSpawner.ClearCurrentBomb();
         }
 
-        // ??ày?•¨‘Ì
         Destroy(gameObject);
-        Debug.Log("Bomb exploded and destroyed.");
+
+        Debug.Log("Explosion occurred and bullet destroyed.");
+    }
+
+    private void Awake()
+    {
+        bombSpawner = FindObjectOfType<BombSpawner>();
+        rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 }
