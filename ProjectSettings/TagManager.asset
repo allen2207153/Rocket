@@ -9,6 +9,7 @@ TagManager:
   - SpeedDash
   - Wall
   - GoalPlatform
+  - DeathPlatform
   layers:
   - Default
   - TransparentFX
