@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 1633293553778052388}
   - component: {fileID: 4520464020613097343}
   - component: {fileID: 2286675232506714798}
+  - component: {fileID: 6778615206610406500}
   m_Layer: 6
   m_Name: Player_1128
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +95,7 @@ MonoBehaviour:
   slopeIncreaseMultiplier: 2.5
   groundDrag: 5
   jumpForce: 15
-  jumpCooldown: 0.25
+  jumpCooldown: 0.5
   airMultiplier: 0.5
   crouchSpeed: 3.5
   crouchYScale: 0.5
@@ -265,10 +266,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7596543460533717245, guid: 4a8202c1102dbc940aeffd110d0a6c44, type: 3}
   firePoint: {fileID: 0}
-  bulletSpeed: 50
+  bulletSpeed: 75
   fireRate: 0.5
   maxBullets: 6
   bulletTextTMP: {fileID: 0}
+--- !u!114 &6778615206610406500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889444407382556921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768476ea8e42f1e46aceadbbc6ae8c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+  deathUI: {fileID: 0}
+  timerText: {fileID: 0}
 --- !u!1 &1890186198453611830
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1805655763269085287
 Transform:
   m_ObjectHideFlags: 0
