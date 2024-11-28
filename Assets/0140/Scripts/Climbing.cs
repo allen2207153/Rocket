@@ -59,14 +59,6 @@ public class Climbing : MonoBehaviour
 
     private void StateMachine()
     {
-        // State 0 - Ledge Grabbing
-        //if (ledgegrabbing.holding)
-        //{
-        //    if (climbing) StopClimbing();
-        //
-        //    // everything else gets handled by the SubStateMachine() in the ledge grabbing script
-        //}
-        
         // State 1 - Climbing
         if (wallFront && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle && !exitingWall)
         {

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ExplosionEffect : MonoBehaviour
 {
-    public float explosionForce = 500f;   // 爆発の力（爆風の強さ）
-    public float explosionRadius = 5f;    // 爆発の範囲
+    public float explosionForce = 7.5f;   // 爆発の力（爆風の強さ）
+    public float explosionRadius = 3.5f;    // 爆発の範囲
     public float upwardsModifier = 1f;    // 爆炸时的向上修正
 
     // 爆発の処理

@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 0}
-  step: 0.25
-  maxStepDistance: 0.25
+  step: 0.5
+  maxStepDistance: 1
   rotationStep: 5
   maxRotationStep: 5
   smooth: 10
-  speedCurve: 0
+  speedCurve: 5
   travelLimit: {x: 0.025, y: 0.025, z: 0.025}
   bobLimit: {x: 0.01, y: 0.01, z: 0.01}
   bobExaggeration: 0
@@ -93,7 +93,7 @@ Transform:
   - {fileID: 2566441090018485368}
   - {fileID: 2292899844720230698}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8666927375889785119
 MonoBehaviour:
@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588c7c5673f99fa46875c68dc59f2600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 400
-  sensY: 400
+  sensX: 300
+  sensY: 300
   orientation: {fileID: 0}
   cameraHolder: {fileID: 796600071440190315}
 --- !u!114 &4469321115824803931
@@ -327,8 +327,6 @@ GameObject:
   - component: {fileID: 2588877230269814323}
   - component: {fileID: 1551573463967015558}
   - component: {fileID: 3523867751524436405}
-  - component: {fileID: 4050483228259508249}
-  - component: {fileID: 3467519759481027274}
   m_Layer: 0
   m_Name: Player_Camera
   m_TagString: MainCamera
@@ -411,36 +409,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3448386849160485994}
   m_Enabled: 1
---- !u!114 &4050483228259508249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3448386849160485994}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 588c7c5673f99fa46875c68dc59f2600, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensX: 400
-  sensY: 400
-  orientation: {fileID: 0}
-  cameraHolder: {fileID: 796600071440190315}
---- !u!114 &3467519759481027274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3448386849160485994}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bdfe58f430a3054bad66f1fa3f1ce9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 2588877230269814323}
-  zoomfactor: 1.5
 --- !u!1 &5731400977517499250
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1c4dc7d4a53eb64db2aeaacd3bcea8e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1c4dc7d4a53eb64db2aeaacd3bcea8e, type: 3}
       propertyPath: m_LocalRotation.w
