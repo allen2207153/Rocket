@@ -9,6 +9,9 @@ TagManager:
   - SpeedDash
   - Wall
   - GoalPlatform
+  - MovingPlate
+  - DisappearPlate
+  - FallPlate
   layers:
   - Default
   - TransparentFX
