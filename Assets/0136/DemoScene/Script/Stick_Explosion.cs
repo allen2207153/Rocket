@@ -1,15 +1,17 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet_Explosion : MonoBehaviour, IBullet
+public class StickyBulletExplosion : MonoBehaviour, IBullet
 {
     private Vector3 direction;
     private float speed;
     private bool hasExploded = false;
+    private bool isStuck = false;
 
     public ExplosionEffect explosionEffect;
     private BombSpawner bombSpawner;
+
     private Rigidbody rb;
 
     public void Initialize(Vector3 direction, float speed)
@@ -20,7 +22,7 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
 
     private void FixedUpdate()
     {
-        if (!hasExploded)
+        if (!hasExploded && !isStuck)
         {
             Move();
         }
@@ -37,19 +39,25 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
 
         if (target.CompareTag("Wall"))
         {
-            Debug.Log("Bullet hit a wall!");
-            Explode();
+            Debug.Log("Bullet hit a wall and stuck!");
+            StickToWall();
         }
-
-        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision other)
     {
-        if (!hasExploded)
+        if (!hasExploded && !isStuck)
         {
             OnHit(other.gameObject);
         }
+    }
+
+    private void StickToWall()
+    {
+        isStuck = true;
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        transform.parent = rb.transform;
     }
 
     public void Explode()
@@ -78,5 +86,13 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
         bombSpawner = FindObjectOfType<BombSpawner>();
         rb = GetComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+    }
+
+    private void Update()
+    {
+        if (isStuck && Input.GetKeyDown(KeyCode.G))
+        {
+            Explode();
+        }
     }
 }
