@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+//using static UnityEditorInternal.VersionControl.ListControl;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Player_Movement : MonoBehaviour
     private float moveSpeed;  // Current movement speed
     private float desiredMoveSpeed;  // Desired movement speed
     private float lastDesiredMoveSpeed;  // Last desired movement speed
+    private MovementState lastState;
     public float walkSpeed;  // Walking speed
     public float sprintSpeed;  // Sprinting speed
     public float slideSpeed;  // Sliding speed
@@ -17,6 +19,9 @@ public class Player_Movement : MonoBehaviour
     public float climbSpeed;  // Climbing speed
     public float vaultSpeed;  // Vaulting speed
     public float airMinSpeed;  // Minimum air speed
+    public float dashSpeed;
+    public float dashSpeedChangeFactor;
+    public float maxYSpeed;
 
     public float speedIncreaseMultiplier;  // Multiplier for speed increase
     public float slopeIncreaseMultiplier;  // Multiplier for slope speed increase
@@ -74,6 +79,7 @@ public class Player_Movement : MonoBehaviour
         vaulting,  // Player is vaulting
         crouching,  // Player is crouching
         sliding,  // Player is sliding
+        dashing,
         air  // Player is in the air
     }
 
@@ -81,6 +87,7 @@ public class Player_Movement : MonoBehaviour
     public bool crouching;  // Is the player crouching?
     public bool wallrunning;  // Is the player wall running?
     public bool climbing;  // Is the player climbing?
+    public bool dashing;
     public bool vaulting;  // Is the player vaulting?
 
     public bool freeze;  // Is the player frozen?
@@ -180,6 +187,13 @@ public class Player_Movement : MonoBehaviour
             desiredMoveSpeed = vaultSpeed;  // Set vault speed
         }
 
+        else if (dashing)
+        {
+            state = MovementState.dashing;
+            desiredMoveSpeed = dashSpeed;
+            speedChangeFactor = dashSpeedChangeFactor;
+        }
+
         else if (climbing)
         {
             state = MovementState.climbing;  // Player is climbing
@@ -233,6 +247,7 @@ public class Player_Movement : MonoBehaviour
         }
 
         bool desiredMoveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;  // Check if desired speed has changed
+        if (lastState == MovementState.dashing) keepMomentum = true;
 
         if (desiredMoveSpeedHasChanged)
         {
@@ -253,12 +268,14 @@ public class Player_Movement : MonoBehaviour
         if (Mathf.Abs(desiredMoveSpeed - moveSpeed) < 0.1f) keepMomentum = false;
     }
 
+    private float speedChangeFactor;
     private IEnumerator SmoothlyLerpMoveSpeed()
     {
         // Smoothly interpolate the movement speed to the desired value
         float time = 0;
         float difference = Mathf.Abs(desiredMoveSpeed - moveSpeed);
         float startValue = moveSpeed;
+        float boostFactor = speedChangeFactor;
 
         while (time < difference)
         {
@@ -387,6 +404,18 @@ public class Player_Movement : MonoBehaviour
         // Round the value to the specified number of digits
         float mult = Mathf.Pow(10.0f, (float)digits);
         return Mathf.Round(value * mult) / mult;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("GoalPlatform"))
+        {
+            Debug.Log("Player reached the goal platform!");
+            TimerController timerController = FindObjectOfType<TimerController>();
+            if (timerController != null)
+            {
+                timerController.OnReachGoal();
+            }
+        }
     }
 }
 

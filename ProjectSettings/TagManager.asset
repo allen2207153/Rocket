@@ -8,6 +8,8 @@ TagManager:
   - SpeedSlow
   - SpeedDash
   - Wall
+  - GoalPlatform
+  - DeathPlatform
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Wall
   - Ground
   - bullet
-  - 
+  - Weapons
   - 
   - 
   - 
