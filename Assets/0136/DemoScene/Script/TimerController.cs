@@ -46,9 +46,14 @@ public class TimerController : MonoBehaviour
         if (isCountingUp)
         {
             timer += Time.deltaTime; // 経過時間を加算
-            int seconds = Mathf.FloorToInt(timer); // 秒数を計算
-            int milliseconds = Mathf.FloorToInt((timer - seconds) * 100); // ミリ秒を計算
-            timerText.text = string.Format("{0:0}:{1:00}", seconds, milliseconds); // 時間を表示
+
+            // 分、秒、ミリ秒の計算
+            int minutes = Mathf.FloorToInt(timer / 60); // 分を計算
+            int seconds = Mathf.FloorToInt(timer % 60); // 秒数を計算
+            int milliseconds = Mathf.FloorToInt((timer * 100) % 100); // ミリ秒を計算
+
+            // 正確な時間を表示
+            timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
         }
     }
 
@@ -60,9 +65,12 @@ public class TimerController : MonoBehaviour
         resultTimeText.gameObject.SetActive(true); // 結果時間のテキストを表示
 
         // 結果UIに表示する時間を設定
-        int seconds = Mathf.FloorToInt(timer);
-        int milliseconds = Mathf.FloorToInt((timer - seconds) * 100);
-        resultTimeText.text = string.Format("Time : {0:0}:{1:00}", seconds, milliseconds); // 結果時間を更新
+        int minutes = Mathf.FloorToInt(timer / 60); // 分を計算
+        int seconds = Mathf.FloorToInt(timer % 60); // 秒数を計算
+        int milliseconds = Mathf.FloorToInt((timer * 100) % 100); // ミリ秒を計算
+
+        // 結果時間を更新
+        resultTimeText.text = string.Format("Time : {0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
     }
 
     // プレイヤーが目標プラットフォームに接触したときに検出する
