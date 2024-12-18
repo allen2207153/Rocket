@@ -302,7 +302,7 @@ public class Player_Movement : MonoBehaviour
     {
         if (climbingScript.exitingWall) return;  // Prevent movement if exiting the wall during climbing
         //if (climbingScriptDone.exitingWall) return; // Prevent movement if exiting the wall during climbing (older script reference)
-        if (restricted) return;  // If movement is restricted, don't apply forces
+        //if (restricted) return;  // If movement is restricted, don't apply forces
 
         // Calculate the movement direction based on input and orientation
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
