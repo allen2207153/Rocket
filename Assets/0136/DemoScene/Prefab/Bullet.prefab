@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51633be74a659a44b91437daf9f39dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 20
-  explosionRadius: 5.07
-  upwardsModifier: 20
+  explosionForce: 7.5
+  explosionRadius: 3.5
+  upwardsModifier: 1
+  rotationForceFactor: 0.2
 --- !u!1 &7330657598300901484
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ Transform:
   m_Children:
   - {fileID: 7686252429951981142}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &69893050168263697
 MeshFilter:

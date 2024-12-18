@@ -227,11 +227,11 @@ public class Player_Movement : MonoBehaviour
             desiredMoveSpeed = crouchSpeed;  // Set crouch speed
         }
 
-        else if (grounded && Input.GetKey(sprintKey))
-        {
-            state = MovementState.sprinting;  // Player is sprinting
-            desiredMoveSpeed = sprintSpeed;  // Set sprint speed
-        }
+        //else if (grounded && Input.GetKey(sprintKey))
+        //{
+        //    state = MovementState.sprinting;  // Player is sprinting
+        //    desiredMoveSpeed = sprintSpeed;  // Set sprint speed
+        //}
 
         else if (grounded)
         {
