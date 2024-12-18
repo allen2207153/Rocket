@@ -10,7 +10,9 @@ TagManager:
   - Wall
   - GoalPlatform
   - DeathPlatform
-  - Bullet
+  - FallPlate
+  - MovingPlate
+  - DisappearPlate
   layers:
   - Default
   - TransparentFX
