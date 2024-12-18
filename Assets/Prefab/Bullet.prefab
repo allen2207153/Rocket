@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51633be74a659a44b91437daf9f39dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 7.5
+  explosionForce: 10
   explosionRadius: 3.5
   upwardsModifier: 7.5
+  rotationForceFactor: 0.2
 --- !u!1 &7596543460533717245
 GameObject:
   m_ObjectHideFlags: 0
