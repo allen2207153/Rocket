@@ -54,9 +54,9 @@ public class StickyBulletExplosion : MonoBehaviour, IBullet
 
     private void StickToWall()
     {
-        isStuck = true;
-        rb.isKinematic = true;
+        isStuck = true; 
         rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
         transform.parent = rb.transform;
     }
 
