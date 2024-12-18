@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/nTools/PrefabPainter/Examples/Prefabs/boxwcans.prefab.meta
 guid: b1a7023ae95504990b85830956b5db29
+========
+guid: 8f1f768a561714ad09e362c746ee7d95
+>>>>>>>> 0140_Ver1.2:Assets/nTools/PrefabPainter/Examples/Prefabs/book_c.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

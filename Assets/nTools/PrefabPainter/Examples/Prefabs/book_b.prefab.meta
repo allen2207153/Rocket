@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/nTools/PrefabPainter/Examples/Prefabs/book_b.prefab.meta
-guid: aae38cd2299054ce9a800d5aadc0e100
+<<<<<<<< HEAD:Assets/nTools/PrefabPainter/Examples/Prefabs/box.prefab.meta
+guid: 2775c26e84b054356801677a43337ef5
 ========
-guid: 80bd617a1597f4350b98c07b85d60a05
->>>>>>>> Main_Merge:Assets/nTools/PrefabPainter/Examples/Prefabs/book_a.prefab.meta
+guid: aae38cd2299054ce9a800d5aadc0e100
+>>>>>>>> 0140_Ver1.2:Assets/nTools/PrefabPainter/Examples/Prefabs/book_b.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
