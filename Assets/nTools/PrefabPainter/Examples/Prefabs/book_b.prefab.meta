@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/nTools/PrefabPainter/Examples/Prefabs/book_b.prefab.meta
 guid: aae38cd2299054ce9a800d5aadc0e100
+========
+guid: 80bd617a1597f4350b98c07b85d60a05
+>>>>>>>> Main_Merge:Assets/nTools/PrefabPainter/Examples/Prefabs/book_a.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

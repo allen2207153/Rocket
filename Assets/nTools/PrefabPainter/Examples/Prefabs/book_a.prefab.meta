@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/nTools/PrefabPainter/Examples/Prefabs/book_a.prefab.meta
 guid: 80bd617a1597f4350b98c07b85d60a05
+========
+guid: 6ba08c60c98447f4db02317e361a1f7a
+>>>>>>>> Main_Merge:Assets/0140/Resource/Level_Bulid/Basic_Shape/Prefab/Floor_01_80x80x5 Variant.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

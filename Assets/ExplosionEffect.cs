@@ -44,44 +44,53 @@ public class ExplosionEffect : MonoBehaviour
     {
         float elapsed = 0f;
 
-        // 在指定的时间内持续施加吸引力
+        // 指定した時間内に吸引力を継続的に適用
         while (elapsed < duration)
         {
-            // 获取爆炸范围内的所有碰撞器
             Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius);
 
-            // 对每个碰撞器添加吸引力
             foreach (Collider col in colliders)
             {
-                // 如果有刚体，则施加吸引力
                 Rigidbody rb = col.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    // 计算物体到爆炸中心的方向（吸引力）
+                    // 中心方向の吸引力を計算
                     Vector3 directionToCenter = (explosionPosition - col.transform.position).normalized;
 
-                    // 基于距离调整吸引力，使得越靠近中心力越大
+                    // 吸引力の大きさを距離に応じて調整
                     float distance = Vector3.Distance(explosionPosition, col.transform.position);
-                    float adjustedForce = Mathf.Lerp(explosionForce, 0, distance / explosionRadius);
+                    float adjustedForce = explosionForce * Mathf.Pow(1 - Mathf.Clamp01(distance / explosionRadius), 2);
 
-                    // 减少旋转的离心力系数，防止物体被甩出
-                    rotationForceFactor = 0.2f;  // 调整为更小的系数
-                    Vector3 rotationAxis = Vector3.up; // 旋转轴设置为向上的方向
-                    Vector3 perpendicularForce = Vector3.Cross(directionToCenter, rotationAxis).normalized * adjustedForce * rotationForceFactor;
-
-                    // 将吸引力和绕中心旋转的力结合
-                    Vector3 finalForce = directionToCenter * adjustedForce + perpendicularForce;
-
-                    // 施加合力到物体
-                    rb.AddForce(finalForce, ForceMode.Acceleration); // 使用加速度模式，力的效果更明显
+                    // 吸引力を適用
+                    rb.AddForce(directionToCenter * adjustedForce, ForceMode.Acceleration);
                 }
             }
 
-            // 增加经过的时间
             elapsed += Time.fixedDeltaTime;
-
-            // 等待下一帧物理更新（FixedUpdate）
             yield return new WaitForFixedUpdate();
+        }
+
+        // 黒洞が消失する際に物体の速度をリセット
+        ResetObjectVelocities(explosionPosition);
+    }
+
+    // 吸引範囲内の物体の速度をリセットする
+    private void ResetObjectVelocities(Vector3 explosionPosition)
+    {
+        Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius);
+
+        foreach (Collider col in colliders)
+        {
+            Rigidbody rb = col.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                // 速度をゼロに設定
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+
+                // 必要に応じて物体を固定
+                rb.isKinematic = false; // 必要であれば true に変更して物体を固定化
+            }
         }
     }
 
