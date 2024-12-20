@@ -40,7 +40,7 @@ Transform:
   - {fileID: 1805655763269085287}
   - {fileID: 1402495724015245730}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5265996439236557437
 Rigidbody:
@@ -81,21 +81,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c686cd88760aad4d9af9f1970a25efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  sprintSpeed: 20
-  slideSpeed: 25
-  wallrunSpeed: 10
-  climbSpeed: 3
+  walkSpeed: 25
+  sprintSpeed: 35
+  slideSpeed: 35
+  wallrunSpeed: 20
+  climbSpeed: 5
   vaultSpeed: 15
-  airMinSpeed: 7.5
+  airMinSpeed: 20
   dashSpeed: 50
   dashSpeedChangeFactor: 50
   maxYSpeed: 50
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   groundDrag: 5
-  jumpForce: 10
-  jumpCooldown: 0.25
+  jumpForce: 15
+  jumpCooldown: 1
   airMultiplier: 0.5
   crouchSpeed: 3.5
   crouchYScale: 0.5
@@ -141,10 +141,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   wallRunForce: 200
-  wallJumpUpForce: 7
-  wallJumpSideForce: 14
-  wallClimbSpeed: 3
-  maxWallRunTime: 4
+  wallJumpUpForce: 10
+  wallJumpSideForce: 15
+  wallClimbSpeed: 5
+  maxWallRunTime: 2.5
   jumpKey: 32
   upwardsRunKey: 304
   downwardsRunKey: 306
@@ -217,12 +217,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 1402495724015245730}
   playerCamera: {fileID: 0}
-  dashForce: 25
+  dashForce: 50
   dashUpwardForce: 0
-  maxDashYSpeed: 50
+  maxDashYSpeed: 100
   dashDuration: 0.1
   playercamera: {fileID: 0}
-  dashFov: 100
+  dashFov: 125
   useCameraForward: 1
   allowAllDirections: 1
   disableGravity: 1
@@ -264,8 +264,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f26aa5b57bb03148b76a58d5cb21711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  stickyBulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 7596543460533717245, guid: 4a8202c1102dbc940aeffd110d0a6c44, type: 3}
+  stickyBulletPrefab: {fileID: 7196793967249520964, guid: f4ddcab90e5f70f4ebe1009e14c4226a, type: 3}
   gravityBulletPrefab: {fileID: 1530689595928836491, guid: 4716b252e175bcf46aab9f607b70169f, type: 3}
   firePoint: {fileID: 0}
   bulletSpeed: 75
