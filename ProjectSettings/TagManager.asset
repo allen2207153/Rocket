@@ -11,6 +11,8 @@ TagManager:
   - GoalPlatform
   - DeathPlatform
   - Bullet
+  - FallPlate
+  - VFX1
   layers:
   - Default
   - TransparentFX
