@@ -12,6 +12,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _DISABLE_OUTLINE
   - _EMISSIVE_SIMPLE
   - _IS_ANGELRING_OFF
   - _IS_OUTLINE_CLIPPING_NO
@@ -38,7 +39,8 @@ Material:
   stringTagMap:
     IgnoreProjection: False
     RenderType: Opaque
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - ALWAYS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -336,12 +338,12 @@ Material:
     - _Is_BlendAddToMatCap: 1
     - _Is_BlendBaseColor: 1
     - _Is_ColorShift: 0
-    - _Is_Filter_HiCutPointLightColor: 0
+    - _Is_Filter_HiCutPointLightColor: 1
     - _Is_Filter_LightColor: 0
     - _Is_LightColor_1st_Shade: 1
     - _Is_LightColor_2nd_Shade: 1
     - _Is_LightColor_AR: 1
-    - _Is_LightColor_Ap_RimLight: 1
+    - _Is_LightColor_Ap_RimLight: 0
     - _Is_LightColor_Base: 1
     - _Is_LightColor_HighColor: 1
     - _Is_LightColor_MatCap: 1
@@ -453,7 +455,7 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _Unlit_Intensity: 1
+    - _Unlit_Intensity: 0
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
     - _Use_1stAs2nd: 0
@@ -489,7 +491,7 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}
     - _FirstShadeMaskColor: {r: 0, g: 1, b: 1, a: 1}
-    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighColor: {r: 0, g: 0, b: 0, a: 0}
     - _HighlightMaskColor: {r: 1, g: 1, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

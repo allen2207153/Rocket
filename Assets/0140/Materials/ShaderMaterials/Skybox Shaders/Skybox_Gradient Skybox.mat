@@ -25,12 +25,12 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Exponent: 1
+    - _Exponent: 2.5
     - _Intensity: 1
-    - _UpVectorPitch: 1
-    - _UpVectorYaw: 1
+    - _UpVectorPitch: 5
+    - _UpVectorYaw: 5
     m_Colors:
-    - _Color1: {r: 1, g: 0, b: 1, a: 0}
+    - _Color1: {r: 0.13725491, g: 0.13725491, b: 0.13725491, a: 1}
     - _Color2: {r: 0, g: 1, b: 1, a: 0}
-    - _UpVector: {r: 0.00030458646, g: 0.9998477, b: 0.017449748, a: 0}
+    - _UpVector: {r: 0.0075961226, g: 0.9961947, b: 0.08682408, a: 0}
   m_BuildTextureStacks: []
