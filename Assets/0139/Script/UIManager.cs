@@ -1,51 +1,21 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    private Dictionary<string, GameObject> uiElements = new Dictionary<string, GameObject>();
+    [SerializeField] private MainMenuUI mainMenu; // メインメニューの参照
+    [SerializeField] private PauseMenuUI pauseMenu; // ポーズメニューの参照
 
-    public void RegisterUI(string name, GameObject uiObject)
+    // メニューを開く
+    public void OpenMenu(IUIElement menu)
     {
-        if (!uiElements.ContainsKey(name))
-        {
-            uiElements[name] = uiObject;
-        }
+        menu.Show(); // メニューを表示
     }
 
-    public void ShowUI(string name)
+    // メニューを閉じる
+    public void CloseMenu(IUIElement menu)
     {
-        if (uiElements.ContainsKey(name))
-        {
-            uiElements[name].SetActive(true);
-        }
+        menu.Hide(); // メニューを非表示
     }
 
-    public void HideUI(string name)
-    {
-        if (uiElements.ContainsKey(name))
-        {
-            uiElements[name].SetActive(false);
-        }
-    }
-
-    public void ToggleUI(string name)
-    {
-        if (uiElements.ContainsKey(name))
-        {
-            bool isActive = uiElements[name].activeSelf;
-            uiElements[name].SetActive(!isActive);
-        }
-    }
-
-    public void HideAllUI(List<string> exclude = null)
-    {
-        foreach (var kvp in uiElements)
-        {
-            if (exclude == null || !exclude.Contains(kvp.Key))
-            {
-                kvp.Value.SetActive(false);
-            }
-        }
-    }
 }
+
