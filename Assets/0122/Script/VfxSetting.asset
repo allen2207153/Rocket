@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3764380f0a3686742a23f167c245cd42, type: 3}
+  m_Script: {fileID: 11500000, guid: c70a9458a04fea74cad27561bcc80b48, type: 3}
   m_Name: VfxSetting
   m_EditorClassIdentifier: 
   VFXList:
   - tag: VFX1
-    VfxPrefab: {fileID: 2108668827258725636, guid: 0105c74022f9c7c4c96c77e6df49c32e, type: 3}
+    VfxPrefab: {fileID: 0}
