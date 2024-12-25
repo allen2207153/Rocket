@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXList:
   - tag: VFX1
-    VfxPrefab: {fileID: 0}
+    VfxPrefab: {fileID: 2108668827258725636, guid: e34a90e6478e5664389cf62e48ff9b0a, type: 3}
