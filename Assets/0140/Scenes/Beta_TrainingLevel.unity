@@ -3042,7 +3042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &132798098
 Light:
   m_ObjectHideFlags: 0
@@ -3054,7 +3054,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -17005,7 +17005,7 @@ PrefabInstance:
     - target: {fileID: 1633293553778052388, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
       propertyPath: playercamera
       value: 
-      objectReference: {fileID: 1233051031}
+      objectReference: {fileID: 1233051042}
     - target: {fileID: 2286675232506714798, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
       propertyPath: firePoint
       value: 
@@ -17017,7 +17017,7 @@ PrefabInstance:
     - target: {fileID: 3696330921115061812, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
       propertyPath: playercamera
       value: 
-      objectReference: {fileID: 1233051031}
+      objectReference: {fileID: 1233051042}
     - target: {fileID: 7925743783133646368, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
       propertyPath: deathUI
       value: 
@@ -31025,10 +31025,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 927493272120822112, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
-      propertyPath: orientation
-      value: 
-      objectReference: {fileID: 689108513}
     - target: {fileID: 962085030743715410, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
       propertyPath: move
       value: 
@@ -31036,6 +31032,30 @@ PrefabInstance:
     - target: {fileID: 1807048739712510958, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
       propertyPath: m_Name
       value: CameraHolder_1128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498760006974865313, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 689108513}
+    - target: {fileID: 8342478304691349720, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+      propertyPath: m_Range
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342478304691349720, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342478304691349720, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+      propertyPath: m_SpotAngle
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342478304691349720, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342478304691349720, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8666927375889785119, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
       propertyPath: cameraPosition
@@ -31051,9 +31071,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8812265407634683491, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
   m_PrefabInstance: {fileID: 1233051029}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1233051031 stripped
+--- !u!4 &1233051033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2588877230269814323, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+  m_PrefabInstance: {fileID: 1233051029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1233051042 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 927493272120822112, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2498760006974865313, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
   m_PrefabInstance: {fileID: 1233051029}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -31062,11 +31087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588c7c5673f99fa46875c68dc59f2600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1233051033 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2588877230269814323, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
-  m_PrefabInstance: {fileID: 1233051029}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1237245205
 PrefabInstance:
   m_ObjectHideFlags: 0
