@@ -105,7 +105,7 @@ MonoBehaviour:
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 256
   grounded: 0
   maxSlopeAngle: 40
   climbingScript: {fileID: 2135140109174303897}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 2048
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -190,7 +190,7 @@ MonoBehaviour:
   playermovement: {fileID: 783951750334043020}
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 2048
   climbSpeed: 10
   maxClimbTime: 0.75
   climbJumpUpForce: 12
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f26aa5b57bb03148b76a58d5cb21711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7330657598300901484, guid: 8c70534c8f04cbe49ba430359bb45b95, type: 3}
+  bulletPrefab: {fileID: 0}
   stickyBulletPrefab: {fileID: 7196793967249520964, guid: f4ddcab90e5f70f4ebe1009e14c4226a, type: 3}
   gravityBulletPrefab: {fileID: 1530689595928836491, guid: 4716b252e175bcf46aab9f607b70169f, type: 3}
   firePoint: {fileID: 0}
