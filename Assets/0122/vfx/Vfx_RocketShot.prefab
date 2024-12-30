@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8509165418397523501}
   - component: {fileID: 6262341742910449433}
   m_Layer: 0
-  m_Name: RocketShot
+  m_Name: Vfx_RocketShot
   m_TagString: VFX1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

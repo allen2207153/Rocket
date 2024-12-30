@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class PlayerDeathAndRespawn : MonoBehaviour
 {
@@ -12,11 +11,18 @@ public class PlayerDeathAndRespawn : MonoBehaviour
 
     private float timer = 0f; // タイマー
     private bool isCounting = true; // 計時中かどうか
+    private Rigidbody playerRigidbody; // プレイヤーのRigidbody
 
     private void Start()
     {
         deathUI.SetActive(false); // ゲーム開始時に死亡UIを非表示にする
         ResetTimer(); // タイマーを初期化
+        playerRigidbody = GetComponent<Rigidbody>(); // Rigidbodyを取得
+
+        if (playerRigidbody == null)
+        {
+            Debug.LogError("Rigidbody component is missing from the player object.");
+        }
     }
 
     private void Update()
@@ -36,10 +42,10 @@ public class PlayerDeathAndRespawn : MonoBehaviour
         }
     }
 
-    // プレイヤーが特定の床に触れたときに死亡をトリガーする
-    private void OnCollisionEnter(Collision collision)
+    // プレイヤーが特定のトリガーに触れたときに死亡をトリガーする
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("DeathPlatform"))
+        if (other.CompareTag("DeathPlatform"))
         {
             Die();
         }
@@ -51,16 +57,36 @@ public class PlayerDeathAndRespawn : MonoBehaviour
         isCounting = false; // 計時を停止
         deathUI.SetActive(true); // 死亡UIを表示
         Time.timeScale = 0f; // ゲームを一時停止
+
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.velocity = Vector3.zero; // プレイヤーの速度をリセット
+            playerRigidbody.angularVelocity = Vector3.zero; // 回転速度もリセット
+        }
     }
 
     // プレイヤーのリスポーン処理
     private void Respawn()
     {
-        transform.position = respawnPoint.position; // プレイヤーをリスポーン地点に移動
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.velocity = Vector3.zero; // プレイヤーの速度をリセット
+            playerRigidbody.angularVelocity = Vector3.zero; // 回転速度もリセット
+            playerRigidbody.MovePosition(respawnPoint.position); // Rigidbodyで位置を更新
+        }
+        else
+        {
+            // Rigidbodyがない場合、Transformで位置を更新
+            transform.position = respawnPoint.position;
+        }
+
+        Debug.Log("Respawned at position: " + respawnPoint.position); // デバッグ用出力
+
         deathUI.SetActive(false); // 死亡UIを非表示
         Time.timeScale = 1f; // ゲームを再開
         ResetTimer(); // タイマーをリセット
     }
+
 
     // タイマーをリセット
     private void ResetTimer()
