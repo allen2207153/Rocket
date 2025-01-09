@@ -50,7 +50,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889444407382556921}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 1.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c686cd88760aad4d9af9f1970a25efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 20
+  walkSpeed: 25
   sprintSpeed: 35
   slideSpeed: 35
   wallrunSpeed: 20
@@ -94,15 +94,15 @@ MonoBehaviour:
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   groundDrag: 5
-  jumpForce: 15
+  jumpForce: 25
   jumpCooldown: 1
-  airMultiplier: 0.5
+  airMultiplier: 0.3
   crouchSpeed: 3.5
   crouchYScale: 0.5
   jumpKey: 32
   sprintKey: 304
   crouchKey: 306
-  playerHeight: 2
+  playerHeight: 4
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -151,7 +151,7 @@ MonoBehaviour:
   wallCheckDistance: 0.7
   minJumpHeight: 2
   exitWallTime: 0.2
-  useGravity: 1
+  useGravity: 0
   gravityCounterForce: 27
   orientation: {fileID: 1402495724015245730}
   playercamera: {fileID: 0}
@@ -228,7 +228,7 @@ MonoBehaviour:
   disableGravity: 1
   resetVel: 1
   dashCd: 2.5
-  dashKey: 101
+  dashKey: 0
 --- !u!136 &4520464020613097343
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -248,10 +248,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.5, y: 0, z: 0}
 --- !u!114 &2286675232506714798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
-  stickyBulletPrefab: {fileID: 7196793967249520964, guid: f4ddcab90e5f70f4ebe1009e14c4226a, type: 3}
+  stickyBulletPrefab: {fileID: 0}
   gravityBulletPrefab: {fileID: 1530689595928836491, guid: 4716b252e175bcf46aab9f607b70169f, type: 3}
   firePoint: {fileID: 0}
   bulletSpeed: 75
