@@ -13,6 +13,7 @@ TagManager:
   - Bullet
   - FallPlate
   - VFX1
+  - Destroy Block
   layers:
   - Default
   - TransparentFX

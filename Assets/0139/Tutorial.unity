@@ -2485,10 +2485,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroy Block (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4507009666389290841, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -2532,14 +2528,6 @@ PrefabInstance:
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: CutCascades
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: ExplodeForce
-      value: 4000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4324,10 +4312,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroy Block (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4507009666389290841, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_RootOrder
       value: 37
@@ -4371,14 +4355,6 @@ PrefabInstance:
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: CutCascades
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: ExplodeForce
-      value: 4000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8142,10 +8118,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroy Block (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 4507009666389290841, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -8189,14 +8161,6 @@ PrefabInstance:
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: CutCascades
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: ExplodeForce
-      value: 4000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15466,10 +15430,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroy Block (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 4507009666389290841, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_RootOrder
       value: 38
@@ -15513,14 +15473,6 @@ PrefabInstance:
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: CutCascades
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: ExplodeForce
-      value: 4000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16703,6 +16655,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_1128
       objectReference: {fileID: 0}
+    - target: {fileID: 1045703805400834826, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
+      propertyPath: deathUI
+      value: 
+      objectReference: {fileID: 300209821}
+    - target: {fileID: 1045703805400834826, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
+      propertyPath: resultUI
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1045703805400834826, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 1344206088192209868}
+    - target: {fileID: 1045703805400834826, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
+      propertyPath: resultTimeText
+      value: 
+      objectReference: {fileID: 1344206088192209868}
     - target: {fileID: 1633293553778052388, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
       propertyPath: playerCamera
       value: 
@@ -16804,6 +16772,10 @@ PrefabInstance:
     - target: {fileID: 929288535395089066, guid: 1936728a3e208db46aa6e3b1e0f1a200, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2172090470306087742, guid: 1936728a3e208db46aa6e3b1e0f1a200, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3636853901028958788, guid: 1936728a3e208db46aa6e3b1e0f1a200, type: 3}
       propertyPath: m_Name
@@ -16927,10 +16899,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroy Block
       objectReference: {fileID: 0}
-    - target: {fileID: 4507009666389290841, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -16974,14 +16942,6 @@ PrefabInstance:
     - target: {fileID: 6613382134367113358, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: CutCascades
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308043696686739360, guid: dd3c7ac5997f9e44a9f977fe15535437, type: 3}
-      propertyPath: ExplodeForce
-      value: 4000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
