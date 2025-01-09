@@ -255,7 +255,7 @@ public class mapObjectSetting : MonoBehaviour
             float elapsedTime = 0f;
             while (elapsedTime < dashDuration)
             {
-                playerRigidbody.AddForce(dashDirection * dashForce, ForceMode.Impulse);
+                playerRigidbody.AddForce(dashDirection * dashForce, ForceMode.Force);
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
