@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class Gravity_Explosion_Effect : MonoBehaviour, IBullet
     private bool hasExploded = false;
     public bool isStuck;
 
-    public ExplosionEffect explosionEffect;
+    public ExplosionEffect explosionEffect;  // 引用 ExplosionEffect 類別
     private BombSpawner bombSpawner;
     private Rigidbody rb;
 
@@ -50,9 +49,15 @@ public class Gravity_Explosion_Effect : MonoBehaviour, IBullet
 
     private void StopBullet()
     {
-        rb.velocity = Vector3.zero;
-        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;  // 停止子彈的移動
+        rb.isKinematic = true;  // 設置為靜態，不受物理影響
         Debug.Log("Bullet stopped after reaching max distance.");
+
+        // 在子彈停止的位置生成特效
+        if (explosionEffect != null)
+        {
+            explosionEffect.Explode_Gravity(transform.position);  // 生成特效
+        }
     }
 
     public void OnHit(GameObject target)
@@ -82,7 +87,7 @@ public class Gravity_Explosion_Effect : MonoBehaviour, IBullet
 
         if (explosionEffect != null)
         {
-            explosionEffect.Explode_Gravity(transform.position);
+            explosionEffect.Explode_Gravity(transform.position);  // 再次調用特效
         }
 
         if (bombSpawner != null)
@@ -90,13 +95,11 @@ public class Gravity_Explosion_Effect : MonoBehaviour, IBullet
             bombSpawner.ClearCurrentBomb();
         }
         StickToWall();
-        // 開始協程，延遲5秒後銷毀物體
-        StartCoroutine(DestroyAfterDelay(5f));
+        StartCoroutine(DestroyAfterDelay(5f));  // 開始延遲銷毀物體
 
         Debug.Log("Explosion occurred, bullet will be destroyed after 5 seconds.");
     }
 
-    // 協程，延遲指定秒數後銷毀物體
     private IEnumerator DestroyAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
