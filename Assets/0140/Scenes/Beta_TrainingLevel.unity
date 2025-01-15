@@ -40292,9 +40292,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1438416915471072024, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fb99f3d58c17d4469ecd1232e5b5ca5, type: 2}
+    - target: {fileID: 1438416915471072024, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8132231521639480765, guid: 7fb99f3d58c17d4469ecd1232e5b5ca5, type: 2}
+    - target: {fileID: 1438416915471072024, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1758466258450918860, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
       propertyPath: m_Name
       value: UI_1225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680402269649708686, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fb99f3d58c17d4469ecd1232e5b5ca5, type: 2}
+    - target: {fileID: 3680402269649708686, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8132231521639480765, guid: 7fb99f3d58c17d4469ecd1232e5b5ca5, type: 2}
+    - target: {fileID: 3680402269649708686, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682684482187624, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fb99f3d58c17d4469ecd1232e5b5ca5, type: 2}
+    - target: {fileID: 4356682684482187624, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8132231521639480765, guid: 7fb99f3d58c17d4469ecd1232e5b5ca5, type: 2}
+    - target: {fileID: 4356682684482187624, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9074951661941683239, guid: 8961597bfc151d4419d6239e653d21ef, type: 3}
       propertyPath: m_Pivot.x

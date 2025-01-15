@@ -68,6 +68,8 @@ public class Player_Movement : MonoBehaviour
     Rigidbody rb;  // Reference to the player's Rigidbody
 
     public MovementState state;  // Current movement state
+    
+    
     public enum MovementState
     {
         freeze,  // Player is frozen
@@ -214,7 +216,7 @@ public class Player_Movement : MonoBehaviour
             if (OnSlope() && rb.velocity.y < 0.1f)
             {
                 desiredMoveSpeed = slideSpeed;  // Set sliding speed
-                keepMomentum = true;  // Keep momentum while sliding
+                keepMomentum = true;
             }
 
             else
@@ -236,7 +238,7 @@ public class Player_Movement : MonoBehaviour
         else if (grounded)
         {
             state = MovementState.walking;  // Player is walking
-            desiredMoveSpeed = walkSpeed;  // Set walk speed
+            desiredMoveSpeed = walkSpeed;
         }
 
         else
@@ -353,7 +355,6 @@ public class Player_Movement : MonoBehaviour
     private void Jump()
     {
         exitingSlope = true;  // Set the flag to indicate we're exiting the slope
-
         // Reset vertical velocity before applying jump force
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 

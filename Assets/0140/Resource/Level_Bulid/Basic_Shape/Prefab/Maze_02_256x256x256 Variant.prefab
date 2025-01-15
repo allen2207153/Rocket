@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: 8e5798cfe97dd5c4184282aa1d557833, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9d7b4eddc7f2ca142a094d079c5da148, type: 2}
+      objectReference: {fileID: 2100000, guid: ac4a9ac2fcf03674d99a582ee9010357, type: 2}
     - target: {fileID: 919132149155446097, guid: 8e5798cfe97dd5c4184282aa1d557833, type: 3}
       propertyPath: m_Name
       value: Maze_02_256x256x256 Variant
