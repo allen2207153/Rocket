@@ -124,7 +124,6 @@ public class ExplosionEffect : MonoBehaviour
         // 获取爆炸范围内的所有碰撞器
         Collider[] colliders = Physics.OverlapSphere(explosionPosition, explosionRadius);
 
-        // 播放爆炸特效
         if (explosionEffect != null)
         {
             Instantiate(explosionEffect, explosionPosition, Quaternion.identity);
