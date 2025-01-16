@@ -13,13 +13,7 @@ MonoBehaviour:
   m_Name: VfxSetting
   m_EditorClassIdentifier: 
   VFXList:
-  - tag: VFX1
+  - tag: vfx1
     VfxPrefab: {fileID: 2108668827258725636, guid: e34a90e6478e5664389cf62e48ff9b0a, type: 3}
-  - tag: WallHit
+  - tag: vfx_Concentration
     VfxPrefab: {fileID: 5381392606828460365, guid: 04dc2c9bfba9ae848b299e0d7e10e848, type: 3}
-  - tag: SpeedDash
-    VfxPrefab: {fileID: 5381392606828460365, guid: 04dc2c9bfba9ae848b299e0d7e10e848, type: 3}
-  - tag: DashSkill
-    VfxPrefab: {fileID: 5381392606828460365, guid: 04dc2c9bfba9ae848b299e0d7e10e848, type: 3}
-  - tag: VFX1
-    VfxPrefab: {fileID: 2108668827258725636, guid: e34a90e6478e5664389cf62e48ff9b0a, type: 3}

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class VfxManager : MonoBehaviour
 {
@@ -6,17 +6,10 @@ public class VfxManager : MonoBehaviour
     public static VfxManager Instance { get; private set; }
 
     [SerializeField] private VfxSetting vfxSetting;
-
     [SerializeField] private Camera playerCamera;
 
-    [SerializeField] private GameObject player;
-
-
-    // VFX tags for different effects
-    private const string WALL_COLLISION_VFX = "WallHit";
-    private const string SPEED_DASH_VFX = "SpeedDash";
-    private const string DASH_SKILL_VFX = "DashSkill";
-
+    private GameObject activeVfx; // ã„ã¾ä½œç”¨ä¸­ã®VFXã‚’ç¢ºèª
+    private bool isTriggered = false; // ãƒˆãƒªã‚¬ãƒ¼æ¡ä»¶ã‚’ç¢ºèª
 
     private void Awake()
     {
@@ -30,25 +23,122 @@ public class VfxManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // ƒJƒƒ‰‚ğ’T‚·
+        // Find camera if not assigned
         if (playerCamera == null)
         {
             playerCamera = GameObject.Find("Player_Camera")?.GetComponent<Camera>();
             if (playerCamera == null)
             {
-                Debug.LogWarning("Player_Camera ‘¶İ‚µ‚Ä‚¢‚Ü‚¹‚ñ, main camera‚ÉØ‚è‘Ö‚¦‚Ü‚·");
-                playerCamera = Camera.main;
+                Debug.LogError("Player_Camera å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“");
             }
         }
     }
 
+    private void Update()
+    {
+        // ã‚­ãƒ¼æ¡ä»¶åˆ¤å®š
+        bool keyPressed = Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.LeftControl);
 
-    //VFX‚ğiˆê”Ê“Ij•\¦‚·‚é@
+        if (keyPressed && !isTriggered)
+        {
+            PlayScreenSpaceVfx("vfx_Concentration");
+            isTriggered = true;
+        }
+        else if (!keyPressed && isTriggered)
+        {
+            StopAndDestroyVfx();
+            isTriggered = false;
+        }
+    }
+
+    // ãƒˆãƒªã‚¬ãƒ¼åˆ¤å®š
+    public void HandleCollision(Collision collision)
+    {
+        bool isWall = collision.gameObject.layer == LayerMask.NameToLayer("Wall");
+        bool isSpeedDash = collision.gameObject.CompareTag("SpeedDash");
+
+        if ((isWall || isSpeedDash) && !isTriggered)
+        {
+            PlayScreenSpaceVfx("vfx_Concentration");
+            isTriggered = true;
+        }
+        else if (!isWall && !isSpeedDash && isTriggered)
+        {
+            StopAndDestroyVfx();
+            isTriggered = false;
+        }
+    }
+
+    private void PlayScreenSpaceVfx(string tag)
+    {
+        if (vfxSetting == null || playerCamera == null)
+        {
+            Debug.LogError("VfxSetting åˆã¯ PlayerCamera å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“");
+            return;
+        }
+
+        VFX vfxToPlay = vfxSetting.Get_VFXList.Find(vfx => vfx.tag == tag);
+
+        if (vfxToPlay.VfxPrefab != null)
+        {
+            // ã‚«ãƒ¡ãƒ©ä½ç½®ã¨å›è»¢
+            Vector3 spawnPosition = playerCamera.transform.position + playerCamera.transform.forward * 2f;
+            Quaternion spawnRotation = playerCamera.transform.rotation;
+
+            // ã‚«ãƒ¡ãƒ©å›è»¢ã™ã‚‹ã¨VFXç”Ÿæˆ
+            GameObject instantiatedVfx = Instantiate(vfxToPlay.VfxPrefab, spawnPosition, spawnRotation);
+            instantiatedVfx.transform.parent = playerCamera.transform;
+
+            // VFXãŒã‚«ãƒ¡ãƒ©ã®å‰ã«è¡¨ç¤ºã®ã‚’ç¢ºä¿
+            instantiatedVfx.transform.localPosition = new Vector3(0, 0, 2f);
+            instantiatedVfx.transform.localRotation = Quaternion.identity;
+
+            ParticleSystem ps = instantiatedVfx.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                var main = ps.main;
+                // world spaceã‚’åˆ©ç”¨
+                main.simulationSpace = ParticleSystemSimulationSpace.World;
+
+                var renderer = ps.GetComponent<ParticleSystemRenderer>();
+                renderer.sortingOrder = 999;
+                ps.Play();
+            }
+        }
+    
+        else
+        {
+            Debug.LogWarning($"ã‚¿ã‚° '{tag}' ã® VFX ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
+        }
+    }
+
+    private void StopAndDestroyVfx()
+    {
+        if (activeVfx != null)
+        {
+            var ps = activeVfx.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                ps.Stop(true); // æ­¢ã¾ã‚‹
+            }
+            Destroy(activeVfx);
+            activeVfx = null;
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAndDestroyVfx();
+    }
+
+
+
+    //VFXã‚’ï¼ˆä¸€èˆ¬çš„ï¼‰è¡¨ç¤ºã™ã‚‹ã€€
     public void PlayVfx(string tag, Vector3 position)
     {
         if (vfxSetting == null)
         {
-            Debug.LogError("VfxSetting ‚ªŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            Debug.LogError("VfxSetting ãŒå‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ï¼");
             return;
         }
 
@@ -62,91 +152,19 @@ public class VfxManager : MonoBehaviour
             if (ps != null)
             {
                 ps.Play();
+
+                // è‡ªå‹•çš„ã«æ¶ˆæ»…ã™ã‚‹
+                float lifetime = ps.main.duration;
+                Destroy(instantiatedVfx, lifetime);
             }
         }
+
         else
         {
-            Debug.LogWarning($"ƒ^ƒO '{tag}' ‚Ì VFX ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B");
+            Debug.LogWarning($"ã‚¿ã‚° '{tag}' ã® VFX ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
         }
     }
 
-    // VFX‚ğiƒJƒƒ‰‚Éj•\¦‚·‚é@
-    public void PlayCameraAlignedVfx(string tag, Vector3 position)
-    {
-        Debug.Log("1. Starting PlayCameraAlignedVfx"); // First step
-
-        if (vfxSetting == null || playerCamera == null)
-        {
-            Debug.LogError("VfxSetting or PlayerCamera is not assigned!");
-            return;
-        }
-        Debug.Log("2. VfxSetting and Camera OK"); // Check if we get past first check
-
-        VFX vfxToPlay = vfxSetting.Get_VFXList.Find(vfx => vfx.tag == tag);
-        // Debug.Log($"3. Found VFX: {vfxToPlay != null}"); // Check if VFX is found
-
-        if (vfxToPlay.VfxPrefab != null)
-        {
-            Debug.Log("4. VfxPrefab found, trying to instantiate");
-            GameObject instantiatedVfx = Instantiate(vfxToPlay.VfxPrefab, position, playerCamera.transform.rotation);
-            Debug.Log($"5. VFX instantiated at {position}");
-
-            // Add this debug check
-            Debug.Log($"5.5. Does VFX have ParticleSystem? {instantiatedVfx.GetComponent<ParticleSystem>() != null}");
-
-
-            ParticleSystem ps = instantiatedVfx.GetComponent<ParticleSystem>();
-            if (ps != null)
-            {
-                // Try to find ParticleSystem in children
-                ps = instantiatedVfx.GetComponentInChildren<ParticleSystem>();
-                Debug.Log("5.7. Searched for ParticleSystem in children");
-            }
-
-            if (ps != null)
-            {
-                Debug.Log("6. Found ParticleSystem, playing");
-                ps.Play();
-                Debug.Log("7. ParticleSystem started");
-            }
-            else
-            {
-                Debug.LogError("No ParticleSystem found in VFX prefab or its children!");
-            }
-        }
-    }
-    //  VFX‚ğiƒL[‰Ÿ‚·‚ÆƒJƒƒ‰‚Éj•\¦‚·‚é@
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Debug.Log("Key pressed");
-            if (player != null)
-            {
-                Debug.Log($"Player position: {player.transform.position}");
-                PlayCameraAlignedVfx(DASH_SKILL_VFX, player.transform.position);
-            }
-            else
-            {
-                Debug.LogError("Player reference is null!");
-            }
-        }
-    }
-
-
-    //  VFX‚ğiÕ“Ë”»’è‚ÆƒJƒƒ‰‚Éj•\¦‚·‚é@
-    public void HandleCollisionVfx(Collision collision, GameObject player)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {
-            ContactPoint contact = collision.GetContact(0);
-            PlayCameraAlignedVfx(WALL_COLLISION_VFX, contact.point);
-        }
-
-        if (collision.gameObject.CompareTag("SpeedDash"))
-        {
-            PlayCameraAlignedVfx(SPEED_DASH_VFX, player.transform.position);
-        }
-    }
 }
+
 
