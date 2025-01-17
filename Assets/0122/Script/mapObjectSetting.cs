@@ -60,7 +60,7 @@ public class mapObjectSetting : MonoBehaviour
   private const string SPEED_DASH_TAG = "SpeedDash";      //オートダッシュ 
 
   // トラップを識別する
-  private const string TRAP_MOVE_TAG = "MovingPlate";         //ムービングプレート
+  private const string TRAP_MOVE_TAG = "MovingPlate";         //ムービングプレート　（実装なし）
   private const string TRAP_DISAPPEAR_TAG = "DisappearPlate"; //消えるプレート
   private const string TRAP_FALL_TAG = "FallPlate";           //墜ちるプレート
 
