@@ -68,6 +68,10 @@ public class Wall_Running : MonoBehaviour
     {
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, whatIsWall);
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall);
+        if(wallLeft||wallRight ==true)
+        {
+            Debug.Log("Success");
+        }
     }
 
     private bool AboveGround()
@@ -190,5 +194,20 @@ public class Wall_Running : MonoBehaviour
         // reset y velocity and add force
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(forceToApply, ForceMode.Impulse);
+    }
+
+    private void OnDrawGizmos()
+    {
+        // 
+        Gizmos.color = wallRight ? Color.green : Color.red;
+        Gizmos.DrawRay(transform.position, orientation.right * wallCheckDistance);
+
+        // 
+        Gizmos.color = wallLeft ? Color.green : Color.red;
+        Gizmos.DrawRay(transform.position, -orientation.right * wallCheckDistance);
+
+        // 
+        Gizmos.color = AboveGround() ? Color.green : Color.red;
+        Gizmos.DrawRay(transform.position, Vector3.down * minJumpHeight);
     }
 }

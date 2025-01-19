@@ -25,18 +25,18 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _SkyExponent1: 7.5
-    - _SkyExponent2: 3.5
-    - _SkyIntensity: 1
-    - _SunAlpha: 550
+    - _SkyExponent1: 10
+    - _SkyExponent2: 7.5
+    - _SkyIntensity: 0.5
+    - _SunAlpha: 250
     - _SunAltitude: 38
     - _SunAzimuth: 20
-    - _SunBeta: 1
+    - _SunBeta: 100
     - _SunIntensity: 0
     m_Colors:
-    - _SkyColor1: {r: 0, g: 0.42952278, b: 0.88235295, a: 1}
-    - _SkyColor2: {r: 0, g: 0, b: 0.39215687, a: 1}
-    - _SkyColor3: {r: 0, g: 0, b: 0.13725491, a: 1}
-    - _SunColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SkyColor1: {r: 0, g: 0.13725491, b: 0.13725491, a: 1}
+    - _SkyColor2: {r: 0, g: 1, b: 1, a: 1}
+    - _SkyColor3: {r: 0, g: 0, b: 0, a: 1}
+    - _SunColor: {r: 1, g: 1, b: 1, a: 1}
     - _SunVector: {r: 0.26951554, g: 0.6156615, b: 0.74048793, a: 0}
   m_BuildTextureStacks: []

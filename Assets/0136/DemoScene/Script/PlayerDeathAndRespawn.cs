@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement; // 引入場景管理命名空間
 
 public class PlayerDeathAndRespawn : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class PlayerDeathAndRespawn : MonoBehaviour
         if (deathUI.activeSelf && Input.GetKeyDown(KeyCode.Return))
         {
             Respawn();
+            ResetScene(); // シーンのリセット処理を呼び出す
         }
     }
 
@@ -87,6 +89,12 @@ public class PlayerDeathAndRespawn : MonoBehaviour
         ResetTimer(); // タイマーをリセット
     }
 
+    // シーンをリセットする処理（全てのオブジェクトを元に戻す）
+    private void ResetScene()
+    {
+        // シーンを再読み込みすることで全てのオブジェクトの状態をリセット
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     // タイマーをリセット
     private void ResetTimer()

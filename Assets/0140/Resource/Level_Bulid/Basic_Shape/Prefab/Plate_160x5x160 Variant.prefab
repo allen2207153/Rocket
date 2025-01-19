@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bcccc77aa352e22469948619518dbd9c, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bcccc77aa352e22469948619518dbd9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: -7635826562936255635, guid: bcccc77aa352e22469948619518dbd9c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9d7b4eddc7f2ca142a094d079c5da148, type: 2}
+      objectReference: {fileID: 2100000, guid: ac4a9ac2fcf03674d99a582ee9010357, type: 2}
     - target: {fileID: 919132149155446097, guid: bcccc77aa352e22469948619518dbd9c, type: 3}
       propertyPath: m_Name
       value: Plate_160x5x160 Variant

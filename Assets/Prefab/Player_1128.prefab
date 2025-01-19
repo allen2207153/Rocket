@@ -18,9 +18,10 @@ GameObject:
   - component: {fileID: 4520464020613097343}
   - component: {fileID: 2286675232506714798}
   - component: {fileID: 7925743783133646368}
+  - component: {fileID: 1045703805400834826}
   m_Layer: 6
   m_Name: Player_1128
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +51,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889444407382556921}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 1.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -81,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c686cd88760aad4d9af9f1970a25efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 20
+  walkSpeed: 25
   sprintSpeed: 35
   slideSpeed: 35
   wallrunSpeed: 20
@@ -94,15 +95,15 @@ MonoBehaviour:
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   groundDrag: 5
-  jumpForce: 15
+  jumpForce: 25
   jumpCooldown: 1
-  airMultiplier: 0.5
+  airMultiplier: 0.3
   crouchSpeed: 3.5
   crouchYScale: 0.5
   jumpKey: 32
   sprintKey: 304
   crouchKey: 306
-  playerHeight: 2
+  playerHeight: 4
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -148,10 +149,10 @@ MonoBehaviour:
   jumpKey: 32
   upwardsRunKey: 304
   downwardsRunKey: 306
-  wallCheckDistance: 0.7
-  minJumpHeight: 2
+  wallCheckDistance: 2
+  minJumpHeight: 3
   exitWallTime: 0.2
-  useGravity: 1
+  useGravity: 0
   gravityCounterForce: 27
   orientation: {fileID: 1402495724015245730}
   playercamera: {fileID: 0}
@@ -190,7 +191,7 @@ MonoBehaviour:
   playermovement: {fileID: 783951750334043020}
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 384
   climbSpeed: 10
   maxClimbTime: 0.75
   climbJumpUpForce: 12
@@ -228,7 +229,7 @@ MonoBehaviour:
   disableGravity: 1
   resetVel: 1
   dashCd: 2.5
-  dashKey: 101
+  dashKey: 0
 --- !u!136 &4520464020613097343
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -248,10 +249,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.5, y: 0, z: 0}
 --- !u!114 &2286675232506714798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,19 +260,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889444407382556921}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f26aa5b57bb03148b76a58d5cb21711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  stickyBulletPrefab: {fileID: 7196793967249520964, guid: f4ddcab90e5f70f4ebe1009e14c4226a, type: 3}
+  bulletPrefab: {fileID: 7596543460533717245, guid: 4a8202c1102dbc940aeffd110d0a6c44, type: 3}
+  stickyBulletPrefab: {fileID: 7196793967249520964, guid: 2f0491779ba1c994fb3cc4cd088cbcfd, type: 3}
   gravityBulletPrefab: {fileID: 1530689595928836491, guid: 4716b252e175bcf46aab9f607b70169f, type: 3}
   firePoint: {fileID: 0}
   bulletSpeed: 75
   fireRate: 0.5
   maxBullets: 6
   bulletTextTMP: {fileID: 0}
+  gunLight: {fileID: 0}
 --- !u!114 &7925743783133646368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +289,22 @@ MonoBehaviour:
   respawnPoint: {fileID: 0}
   deathUI: {fileID: 0}
   timerText: {fileID: 0}
+--- !u!114 &1045703805400834826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889444407382556921}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9066411b92efa4a849fe8d56bfc42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  resultUI: {fileID: 0}
+  resultTimeText: {fileID: 0}
+  deathUI: {fileID: 0}
 --- !u!1 &1890186198453611830
 GameObject:
   m_ObjectHideFlags: 0
