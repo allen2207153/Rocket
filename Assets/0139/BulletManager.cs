@@ -1,130 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-//public class BulletManager : MonoBehaviour
-//{
-//    public GameObject bulletPrefab; // ’eŠÛ‚ÌƒvƒŒƒnƒu
-//    public Transform firePoint; // ’eŠÛ”­ËˆÊ’u
-//    public float bulletSpeed = 10f; // ’eŠÛ‚Ì‘¬“x
-
-//    // ’eŠÛ‚ğ”­Ë‚·‚éˆ—
-//    public void ShootBullet()
-//    {
-//        // ’eŠÛ‚Ì¶¬
-//        var bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-//        // Bullet_ExplosionƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚ÄA‰Šú‰»
-//        var bulletExplosion = bulletInstance.GetComponent<Bullet_Explosion>();
-
-//            // ’eŠÛ‚Ì•ûŒü‚Æ‘¬“x‚ğİ’è
-//        bulletExplosion.Initialize(firePoint.forward, bulletSpeed);
-//        bulletExplosion.Move();
-
-//    }
-
-//    // –ˆƒtƒŒ[ƒ€XV‚³‚ê‚éˆ—
-//    private void Update()
-//    {
-//        // ”­ËƒeƒXƒg—p‚Éƒ}ƒEƒXƒNƒŠƒbƒN‚Å’e‚ğŒ‚‚Â
-//        if (Input.GetButtonDown("Fire1"))
-//        {
-//            ShootBullet();
-//            Debug.Log("Success");
-//        }
-//    }
-//}
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using TMPro; 
-
-//public class BulletManager : MonoBehaviour
-//{
-//    public GameObject bulletPrefab; // ’eŠÛ‚ÌƒvƒŒƒnƒu\
-//    public Transform firePoint; // ’eŠÛ”­ËˆÊ’u
-//    public float bulletSpeed = 10f; // ’eŠÛ‚Ì‘¬“x
-//    public float fireRate = 0.5f; // ŠJ‰Î‚ÌŠÔŠui•bj
-//    public int maxBullets = 6; // Å‘å’eŠÛ”
-
-//    private int currentBullets; // Œ»İ‚Ìc‚è’eŠÛ”
-//    private float nextFireTime = 0f; // Ÿ‚É”­Ë‚Å‚«‚éŠÔ
-
-//    public TextMeshProUGUI bulletTextTMP; // qœ[É—Ê‚ğ•\¦‚·‚é TextMeshPro UI Œ³‘f
-//   //public Stick_Explosion gggl;
-
-//    private void Start()
-//    {
-//        // ‰Šú‰»‚É’eŠÛ”‚ğÅ‘å’l‚Éİ’è
-//        currentBullets = maxBullets;
-//        UpdateBulletUI(); // ‰Šú‚Ìqœ[”‚ğ•\¦
-//        //gggl = GetComponent<Stick_Explosion>();
-//    }
-
-//    // ’eŠÛ‚ğ”­Ë‚·‚éˆ—
-//    public void ShootBullet()
-//    {
-//        // ’eŠÛ‚ªc‚Á‚Ä‚¢‚È‚¢ê‡A”­Ë‚¹‚¸ƒƒbƒZ[ƒW‚ğ•\¦‚·‚é
-//        if (currentBullets <= 0)
-//        {
-//            Debug.Log("’eŠÛ‚ª‚ ‚è‚Ü‚¹‚ñIƒŠƒ[ƒh‚ª•K—v‚Å‚·B");
-//            return;
-//        }
-
-//        // ’eŠÛ‚Ì¶¬
-//        var bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-
-//        // Bullet_ExplosionƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚ÄA‰Šú‰»
-//        var bulletExplosion = bulletInstance.GetComponent<Bullet_Explosion>();
-
-//        // ’eŠÛ‚Ì•ûŒü‚Æ‘¬“x‚ğİ’è
-//        bulletExplosion.Initialize(firePoint.forward, bulletSpeed);
-//        bulletExplosion.Move();
-
-//        // ”­ËŒã‚É’eŠÛ”‚ğŒ¸­
-//        currentBullets--;
-//        Debug.Log("c‚è’eŠÛ”: " + currentBullets);
-
-//        // ’eŠÛ”‚Ì UI •\¦‚ğXV
-//        UpdateBulletUI();
-//    }
-
-//    // ƒŠƒ[ƒhˆ—
-//    private void Reload()
-//    {
-//        // ’eŠÛ”‚ğÅ‘å’l‚ÉƒŠƒZƒbƒg
-//        currentBullets = maxBullets;
-//        Debug.Log("ƒŠƒ[ƒhŠ®—¹B’eŠÛ”‚ªƒŠƒZƒbƒg‚³‚ê‚Ü‚µ‚½: " + currentBullets);
-
-//        // ’eŠÛ”‚Ì UI •\¦‚ğXV
-//        UpdateBulletUI();
-//    }
-
-//    // –ˆƒtƒŒ[ƒ€XV‚³‚ê‚éˆ—
-//    private void Update()
-//    {
-//        // Œ»İ‚ÌŠÔ‚ªŸ‚É”­Ë‚Å‚«‚éŠÔ‚ğ’´‚¦‚Ä‚¢‚éê‡‚É”­Ë‚·‚é
-//        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
-//        {
-//            ShootBullet();
-//            nextFireTime = Time.time + fireRate; // Ÿ‚Ì”­Ë‰Â”\ŠÔ‚ğXV
-//        }
-
-//        // RƒL[‚ğ‰Ÿ‚·‚ÆƒŠƒ[ƒh‚ğs‚¤
-//        if (Input.GetKeyDown(KeyCode.R))
-//        {
-//            Reload();
-//        }
-//    }
-
-//    // ’eŠÛ”‚Ì UI •\¦‚ğXV‚·‚éˆ—
-//    private void UpdateBulletUI()
-//    {
-//        // ’eŠÛ”‚ğ UI ‚É•\¦
-//        bulletTextTMP.text = "Bullet : " + currentBullets + "/" + maxBullets;
-//    }
-//}
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -132,115 +5,143 @@ using TMPro;
 
 public class BulletManager : MonoBehaviour
 {
-    public GameObject bulletPrefab; // ’eŠÛ‚ÌƒvƒŒƒnƒu
-    public GameObject stickyBulletPrefab; // ”S’…’eŠÛ‚ÌƒvƒŒƒnƒu
-    public GameObject gravityBulletPrefab; // d—Í’eŠÛ‚ÌƒvƒŒƒnƒu
-    public Transform firePoint; // ’eŠÛ”­ËˆÊ’u
-    public float bulletSpeed = 10f; // ’eŠÛ‚Ì‘¬“x
-    public float fireRate = 0.5f; // ŠJ‰Î‚ÌŠÔŠui•bj
-    public int maxBullets = 6; // Å‘å’eŠÛ”
+    public GameObject bulletPrefab; // å¼¾ä¸¸ã®ãƒ—ãƒ¬ãƒãƒ–ï¼ˆé€šå¸¸ã®å¼¾ä¸¸ï¼‰
+    public GameObject stickyBulletPrefab; // ç²˜ç€å¼¾ä¸¸ã®ãƒ—ãƒ¬ãƒãƒ–
+    public GameObject gravityBulletPrefab; // é‡åŠ›å¼¾ä¸¸ã®ãƒ—ãƒ¬ãƒãƒ–
+    public Transform firePoint; // å¼¾ä¸¸ç™ºå°„ä½ç½®
+    public float bulletSpeed = 10f; // å¼¾ä¸¸ã®é€Ÿåº¦
+    public float fireRate = 0.5f; // ç™ºå°„é–“éš”ï¼ˆç§’ï¼‰
+    public int maxBullets = 6; // æœ€å¤§å¼¾ä¸¸æ•°
 
-    private int currentBullets; // Œ»İ‚Ìc‚è’eŠÛ”
-    private float nextFireTime = 0f; // Ÿ‚É”­Ë‚Å‚«‚éŠÔ
-    private enum BulletType { Normal, Sticky, Gravity } // ’eŠÛ‚Ìí—Ş
-    private BulletType currentBulletType = BulletType.Normal; // Œ»İ‚Ì’eŠÛ‚Ìí—Ş
+    private int currentBullets; // ç¾åœ¨ã®æ®‹ã‚Šå¼¾ä¸¸æ•°
+    private float nextFireTime = 0f; // æ¬¡ã«ç™ºå°„ã§ãã‚‹æ™‚é–“
+    private enum BulletType { Normal, Sticky, Gravity } // å¼¾ä¸¸ã®ç¨®é¡
+    private BulletType currentBulletType = BulletType.Normal; // ç¾åœ¨é¸æŠã•ã‚Œã¦ã„ã‚‹å¼¾ä¸¸ã®ç¨®é¡
 
-    public TextMeshProUGUI bulletTextTMP; // qœ[É—Ê‚ğ•\¦‚·‚é TextMeshPro UI Œ³‘f
+    public TextMeshProUGUI bulletTextTMP; // å¼¾ä¸¸æ•°ã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã® TextMeshPro UI
+
+    public Light gunLight; // éŠƒã«å–ã‚Šä»˜ã‘ã‚‰ã‚ŒãŸ Light ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆï¼ˆUnity Editor ã§è¨­å®šï¼‰
 
     private void Start()
     {
-        // ‰Šú‰»‚É’eŠÛ”‚ğÅ‘å’l‚Éİ’è
-        currentBullets = maxBullets;
-        UpdateBulletUI(); // ‰Šú‚Ìqœ[”‚ğ•\¦
+        currentBullets = maxBullets; // åˆæœŸå¼¾ä¸¸æ•°ã‚’è¨­å®š
+        UpdateBulletUI();
+
+        if (gunLight == null)
+        {
+            gunLight = GetComponentInChildren<Light>();
+        }
     }
 
-    // ’eŠÛ‚ğ”­Ë‚·‚éˆ—
     public void ShootBullet()
     {
-        // ’eŠÛ‚ªc‚Á‚Ä‚¢‚È‚¢ê‡A”­Ë‚¹‚¸ƒƒbƒZ[ƒW‚ğ•\¦‚·‚é
         if (currentBullets <= 0)
         {
-            Debug.Log("’eŠÛ‚ª‚ ‚è‚Ü‚¹‚ñIƒŠƒ[ƒh‚ª•K—v‚Å‚·B");
+            Debug.Log("å¼¾ä¸¸ãŒã‚ã‚Šã¾ã›ã‚“ï¼ãƒªãƒ­ãƒ¼ãƒ‰ãŒå¿…è¦ã§ã™ã€‚");
             return;
         }
 
-        // g—p‚·‚é’eŠÛ‚Ìí—Ş‚ğŒˆ’è
         GameObject bulletToShoot = null;
+        string description = ""; // å­å½ˆæè¿°æ–‡å­—
+
+        // ä½¿ç”¨ã™ã‚‹å¼¾ä¸¸ã®ç¨®é¡ã‚’æ±ºå®š
         switch (currentBulletType)
         {
             case BulletType.Normal:
                 bulletToShoot = bulletPrefab;
+                description = "é€šå¸¸å¼¾ï¼šæ¨™æº–çš„ãªå¼¾ä¸¸ã§ã™ã€‚";
                 break;
             case BulletType.Sticky:
                 bulletToShoot = stickyBulletPrefab;
+                description = "ç²˜ç€å¼¾ï¼šã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«ç²˜ç€ã—ã¾ã™ã€‚";
                 break;
             case BulletType.Gravity:
                 bulletToShoot = gravityBulletPrefab;
+                description = "é‡åŠ›å¼¾ï¼šé‡åŠ›ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ç™ºç”Ÿã•ã›ã¾ã™ã€‚";
                 break;
         }
 
-        // ’eŠÛ‚Ì¶¬
         var bulletInstance = Instantiate(bulletToShoot, firePoint.position, firePoint.rotation);
-
-        // Bullet_Explosion‚Ü‚½‚ÍStickyBulletExplosion‚Ü‚½‚ÍGravityBulletExplosionƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾‚µ‚ÄA‰Šú‰»
         var bulletExplosion = bulletInstance.GetComponent<IBullet>();
         bulletExplosion.Initialize(firePoint.forward, bulletSpeed);
 
-        // ”­ËŒã‚É’eŠÛ”‚ğŒ¸­
         currentBullets--;
-        Debug.Log("c‚è’eŠÛ”: " + currentBullets);
+        Debug.Log("æ®‹ã‚Šå¼¾ä¸¸æ•°: " + currentBullets);
 
-        // ’eŠÛ”‚Ì UI •\¦‚ğXV
-        UpdateBulletUI();
+        // æ›´æ–° UIï¼ŒåŒ…æ‹¬ç›®å‰å­å½ˆæ•¸é‡å’Œç¨®é¡æè¿°
+        bulletTextTMP.text = "Bullet : " + currentBullets + "/" + maxBullets + "\n" + description;
     }
 
-    // ƒŠƒ[ƒhˆ—
     private void Reload()
     {
-        // ’eŠÛ”‚ğÅ‘å’l‚ÉƒŠƒZƒbƒg
         currentBullets = maxBullets;
-        Debug.Log("ƒŠƒ[ƒhŠ®—¹B’eŠÛ”‚ªƒŠƒZƒbƒg‚³‚ê‚Ü‚µ‚½: " + currentBullets);
-
-        // ’eŠÛ”‚Ì UI •\¦‚ğXV
+        Debug.Log("ãƒªãƒ­ãƒ¼ãƒ‰å®Œäº†ã€‚å¼¾ä¸¸æ•°ãŒãƒªã‚»ãƒƒãƒˆã•ã‚Œã¾ã—ãŸ: " + currentBullets);
         UpdateBulletUI();
     }
 
-    // –ˆƒtƒŒ[ƒ€XV‚³‚ê‚éˆ—
     private void Update()
     {
-        // Œ»İ‚ÌŠÔ‚ªŸ‚É”­Ë‚Å‚«‚éŠÔ‚ğ’´‚¦‚Ä‚¢‚éê‡‚É”­Ë‚·‚é
         if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
         {
             ShootBullet();
-            nextFireTime = Time.time + fireRate; // Ÿ‚Ì”­Ë‰Â”\ŠÔ‚ğXV
+            nextFireTime = Time.time + fireRate;
         }
 
-        // RƒL[‚ğ‰Ÿ‚·‚ÆƒŠƒ[ƒh‚ğs‚¤
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
         }
 
-        // QƒL[‚ğ‰Ÿ‚·‚Æ’eŠÛ‚Ìí—Ş‚ğØ‚è‘Ö‚¦‚é
         if (Input.GetKeyDown(KeyCode.Q))
         {
             SwitchBulletType();
         }
     }
 
-    // ’eŠÛ‚Ìí—Ş‚ğØ‚è‘Ö‚¦‚éˆ—
     private void SwitchBulletType()
     {
-        // ’eŠÛ‚Ìí—Ş‚ğ‡”Ô‚ÉØ‚è‘Ö‚¦‚é
         currentBulletType = (BulletType)(((int)currentBulletType + 1) % System.Enum.GetValues(typeof(BulletType)).Length);
-        Debug.Log(currentBulletType + " ‚ÉØ‚è‘Ö‚¦‚Ü‚µ‚½B");
+        Debug.Log(currentBulletType + " ã«åˆ‡ã‚Šæ›¿ãˆã¾ã—ãŸã€‚");
+
+        // åˆ‡æ›æ§æé¡å‹æ™‚è‡ªå‹•æ›´æ–°å…‰æºé¡è‰²åŠ UI
+        SwitchGunColor();
+        UpdateBulletUI();
     }
 
-    // ’eŠÛ”‚Ì UI •\¦‚ğXV‚·‚éˆ—
+    private void SwitchGunColor()
+    {
+        switch (currentBulletType)
+        {
+            case BulletType.Normal:
+                if (gunLight != null) gunLight.color = Color.white;
+                break;
+            case BulletType.Sticky:
+                if (gunLight != null) gunLight.color = Color.green;
+                break;
+            case BulletType.Gravity:
+                if (gunLight != null) gunLight.color = Color.magenta;
+                break;
+        }
+    }
+
     private void UpdateBulletUI()
     {
-        // ’eŠÛ”‚ğ UI ‚É•\¦
-        bulletTextTMP.text = "Bullet : " + currentBullets + "/" + maxBullets;
+        string description = "";
+
+        // ç¾åœ¨ã®å¼¾ä¸¸ç¨®é¡ã«å¿œã˜ã¦èª¬æ˜æ–‡ã‚’è¨­å®š
+        switch (currentBulletType)
+        {
+            case BulletType.Normal:
+                description = "é€šå¸¸å¼¾ï¼šæ¨™æº–çš„ãªå¼¾ä¸¸ã§ã™ã€‚";
+                break;
+            case BulletType.Sticky:
+                description = "ç²˜ç€å¼¾ï¼šã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«ç²˜ç€ã—ã¾ã™ã€‚";
+                break;
+            case BulletType.Gravity:
+                description = "é‡åŠ›å¼¾ï¼šé‡åŠ›ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ç™ºç”Ÿã•ã›ã¾ã™ã€‚";
+                break;
+        }
+
+        bulletTextTMP.text = "Bullet : " + currentBullets + "/" + maxBullets + "\n" + description;
     }
 }
-
