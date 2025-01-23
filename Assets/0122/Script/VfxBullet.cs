@@ -1,32 +1,40 @@
-using System.Diagnostics;
 using UnityEngine;
 
 public class VfxBullet : MonoBehaviour
 {
-    [SerializeField] private string vfxTag; // The tag should match your VFX in VfxSetting
-    [SerializeField] private string seTag; // The tag should match your VFX in VfxSetting
-    private Gravity_Explosion_Effect _gravity;
-    private bool _gravitybool;
-    private void Update()
-    {
+    [SerializeField] private string vfxTag; // VfxSettingでファイルを設定が必要です。
+    [SerializeField] private string seTag; // SoundSettingでファイルを設定が必要です。
 
-        
-        bool _gravitybool = _gravity.GetComponent<Gravity_Explosion_Effect>().hasExploded;
-        UnityEngine.Debug.Log(_gravitybool);
-    }
-    private void OnCollisionEnter(Collision collision)
+    private bool effectPlayed = false;
+    void Update()
     {
-        // Play VFX at the collision point
-        ContactPoint contact = collision.contacts[0];
-        VfxManager.Instance.PlayVfx(vfxTag, contact.point);
-        SoundManager.Instance.PlaySE(seTag);
-        if(_gravitybool ==true)
+        if (!effectPlayed)
         {
-            VfxManager.Instance.PlayVfx(vfxTag, contact.point);
+            var gravity = GetComponent<Gravity_Explosion_Effect>();
+            if (gravity != null && gravity.hasExploded)
+            {
+                effectPlayed = true;
+                PlayVFX();
+            }
         }
-        // Optionally destroy the bullet after collision
-        // Destroy(gameObject);
     }
 
+    void OnDestroy()
+    {
+        var bullet = GetComponent<Bullet_Explosion>();
+        var sticky = GetComponent<StickyBulletExplosion>();
+
+        if ((bullet != null && bullet.hasExploded) ||
+            (sticky != null && sticky.hasExploded))
+        {
+            PlayVFX();
+        }
+    }
+    private void PlayVFX()
+    {
+        VfxManager.Instance?.PlayVfx(vfxTag, transform.position);
+        SoundManager.Instance?.PlaySE(seTag);
+    }
 
 }
+

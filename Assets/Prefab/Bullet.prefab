@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 8053298652580374513}
   - component: {fileID: 3939707612488679900}
   - component: {fileID: 1100394873363750309}
-  - component: {fileID: 7088313013631923452}
+  - component: {fileID: 2936815158747755727}
   m_Layer: 9
   m_Name: Bullet
   m_TagString: Untagged
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 5960908810361448175}
---- !u!114 &7088313013631923452
+--- !u!114 &2936815158747755727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
