@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXList:
   - tag: vfx1
-    VfxPrefab: {fileID: 2108668827258725636, guid: e34a90e6478e5664389cf62e48ff9b0a, type: 3}
+    VfxPrefab: {fileID: 979235654687299803, guid: b5065f898d8d05944aceb47b07429330, type: 3}
   - tag: vfx_Concentration
     VfxPrefab: {fileID: 5381392606828460365, guid: 04dc2c9bfba9ae848b299e0d7e10e848, type: 3}
+  - tag: vfx2_blackhole
+    VfxPrefab: {fileID: 5380978113933636945, guid: 03bf582122027a74590a30ce7531a6ed, type: 3}

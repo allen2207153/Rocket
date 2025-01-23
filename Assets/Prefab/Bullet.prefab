@@ -48,6 +48,7 @@ MonoBehaviour:
   explosionRadius: 5.07
   upwardsModifier: 20
   rotationForceFactor: 0.2
+  explosionEffect: {fileID: 0}
 --- !u!1 &7596543460533717245
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,4 +210,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd9e66da788f5e4a96737c1da0a0851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxTag: VFX1
+  vfxTag: vfx1
+  seTag: hit1
