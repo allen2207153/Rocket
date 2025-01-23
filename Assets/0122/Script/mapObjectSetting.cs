@@ -95,8 +95,8 @@ public class mapObjectSetting : MonoBehaviour
       }
   }
 
-  // Helper function to set platform transparency
-  private void SetPlatformAlpha(float alpha)
+    // プラットフォームの透明性を設定する関数
+    private void SetPlatformAlpha(float alpha)
   {
       if (meshRenderer && platformMaterial)
       {
@@ -105,8 +105,8 @@ public class mapObjectSetting : MonoBehaviour
           platformMaterial.color = newColor;
           currentAlpha = alpha;
 
-          // When fully transparent, disable the MeshRenderer completely
-          if (alpha <= 0)
+            // 完全に透明になったら、MeshRenderer を完全に無効にします
+            if (alpha <= 0)
           {
               meshRenderer.enabled = false;
           }

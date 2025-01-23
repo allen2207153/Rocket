@@ -6,7 +6,7 @@ public class Bullet_Explosion : MonoBehaviour, IBullet
 {
     private Vector3 direction;
     private float speed;
-    private bool hasExploded = false;
+    public bool hasExploded = false;
 
     public ExplosionEffect explosionEffect;
     private BombSpawner bombSpawner;
