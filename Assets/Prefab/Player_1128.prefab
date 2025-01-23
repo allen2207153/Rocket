@@ -17,8 +17,7 @@ GameObject:
   - component: {fileID: 1633293553778052388}
   - component: {fileID: 4520464020613097343}
   - component: {fileID: 2286675232506714798}
-  - component: {fileID: 7925743783133646368}
-  - component: {fileID: 1045703805400834826}
+  - component: {fileID: 1124425085409301316}
   m_Layer: 6
   m_Name: Player_1128
   m_TagString: Player
@@ -260,7 +259,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889444407382556921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f26aa5b57bb03148b76a58d5cb21711, type: 3}
   m_Name: 
@@ -274,7 +273,7 @@ MonoBehaviour:
   maxBullets: 6
   bulletTextTMP: {fileID: 0}
   gunLight: {fileID: 0}
---- !u!114 &7925743783133646368
+--- !u!114 &1124425085409301316
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,28 +282,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 889444407382556921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 768476ea8e42f1e46aceadbbc6ae8c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}
-  deathUI: {fileID: 0}
-  timerText: {fileID: 0}
---- !u!114 &1045703805400834826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 889444407382556921}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f9066411b92efa4a849fe8d56bfc42c, type: 3}
+  m_Script: {fileID: 11500000, guid: c91b2ccd4fabe5e4e810fcc50d3d06f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
   resultUI: {fileID: 0}
   resultTimeText: {fileID: 0}
   deathUI: {fileID: 0}
+  respawnPoint: {fileID: 0}
 --- !u!1 &1890186198453611830
 GameObject:
   m_ObjectHideFlags: 0
