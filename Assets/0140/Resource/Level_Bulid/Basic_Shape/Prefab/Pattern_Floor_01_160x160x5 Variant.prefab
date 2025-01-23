@@ -53,9 +53,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 2ff72b2f73320e44180b4d99e7205b8c, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 2ff72b2f73320e44180b4d99e7205b8c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: -3033667219593020291, guid: fd8c151d556961142a618a3b5a3d395d, type: 3}
+      objectReference: {fileID: 2100000, guid: 194319239e8681a4a9c05af42e288a8a, type: 2}
     - target: {fileID: 919132149155446097, guid: 2ff72b2f73320e44180b4d99e7205b8c, type: 3}
       propertyPath: m_Name
       value: Pattern_Floor_01_160x160x5 Variant
