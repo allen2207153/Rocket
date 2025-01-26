@@ -69,6 +69,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 8e5798cfe97dd5c4184282aa1d557833, type: 3}
+      propertyPath: m_ImportantGI
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 8e5798cfe97dd5c4184282aa1d557833, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 194319239e8681a4a9c05af42e288a8a, type: 2}
@@ -95,6 +99,10 @@ PrefabInstance:
     - target: {fileID: 8164078558771037576, guid: 8e5798cfe97dd5c4184282aa1d557833, type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 8e5798cfe97dd5c4184282aa1d557833, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -86,6 +86,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: 8ad3c3052bb9ad04d99b69d4ae29fc2c, type: 3}
+      propertyPath: m_ImportantGI
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 8ad3c3052bb9ad04d99b69d4ae29fc2c, type: 3}
       propertyPath: m_RenderingLayerMask
       value: 1
       objectReference: {fileID: 0}
@@ -212,6 +216,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d29f1e3572311074b8b2b5f3fd5aa8fe, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: d29f1e3572311074b8b2b5f3fd5aa8fe, type: 3}
+      propertyPath: m_ImportantGI
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: d29f1e3572311074b8b2b5f3fd5aa8fe, type: 3}
       propertyPath: m_RenderingLayerMask
