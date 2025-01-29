@@ -4689,6 +4689,10 @@ PrefabInstance:
     - target: {fileID: 2286675232506714798, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
       propertyPath: firePoint
       value: 
+      objectReference: {fileID: 1519386163}
+    - target: {fileID: 2286675232506714798, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2286675232506714798, guid: d6cc3ed7ccd996748b4975c823debbd6, type: 3}
       propertyPath: bulletTextTMP
@@ -12867,6 +12871,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2765273762951415117, guid: e2a854ab4435f7b479a5228f8c8a44c8, type: 3}
   m_PrefabInstance: {fileID: 1518462156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1519386163 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8310974148294907366, guid: 355cb48d88dc3e043a32057ef9294a5a, type: 3}
+  m_PrefabInstance: {fileID: 870265043}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1537501128
 PrefabInstance:
