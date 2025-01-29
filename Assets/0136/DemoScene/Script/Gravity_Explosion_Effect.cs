@@ -6,7 +6,7 @@ public class Gravity_Explosion_Effect : MonoBehaviour, IBullet
 {
     private Vector3 direction;
     private float speed;
-    private bool hasExploded = false;
+    public bool hasExploded = false;
     public bool isStuck;
 
     public ExplosionEffect explosionEffect;  // 引用 ExplosionEffect 類別

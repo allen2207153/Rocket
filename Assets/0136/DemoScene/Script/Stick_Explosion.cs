@@ -6,7 +6,7 @@ public class StickyBulletExplosion : MonoBehaviour, IBullet
 {
     private Vector3 direction;
     private float speed;
-    private bool hasExploded = false;
+    public bool hasExploded = false;
     private bool isStuck = false;
 
     public ExplosionEffect explosionEffect;
