@@ -15,8 +15,8 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgmAudioSource;                     //BGM音を鳴らすためのコンポーネント
     private AudioSource seAudioSource;                      //SE音を鳴らすためのコンポーネント
 
-    [SerializeField] private float bgmVolume = 0.5f;        //初始BGM音量
-    [SerializeField] private float seVolume = 0.5f;         //初始SE音量
+    [SerializeField] private float bgmVolume = 0.15f;        //初始BGM音量
+    [SerializeField] private float seVolume = 1.0f;         //初始SE音量
 
     private AudioClip currentBGMAudioClip;                  //最後に鳴らした音
 

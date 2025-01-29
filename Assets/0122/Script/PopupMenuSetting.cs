@@ -20,11 +20,11 @@ public class PopupMenuSetting : MonoBehaviour
     [Header("Sound Settings")]       //BGM音量調整
     [SerializeField] private Slider bgmVolumeSlider;
     [SerializeField] private TextMeshProUGUI bgmVolumeText;
-    [SerializeField] private float defaultBGMVolume = 0.5f;          //BGM音量初期値0~1（0%~100%）
+    [SerializeField] private float defaultBGMVolume = 0.15f;          //BGM音量初期値0~1（0%~100%）
    
     [SerializeField] private Slider seVolumeSlider;  
     [SerializeField] private TextMeshProUGUI seVolumeText;
-    [SerializeField] private float defaultSEVolume = 0.5f;           //SE音量初期値0~1（0%~100%）
+    [SerializeField] private float defaultSEVolume = 1.0f;           //SE音量初期値0~1（0%~100%）
     
     private bool isMenuOpen = false;
 
@@ -186,6 +186,7 @@ public class PopupMenuSetting : MonoBehaviour
         if (bgmVolumeSlider != null)
         {
             bgmVolumeSlider.value = defaultBGMVolume;
+            UpdateBGMVolume(defaultBGMVolume);
         }
     }
 
@@ -194,6 +195,7 @@ public class PopupMenuSetting : MonoBehaviour
         if (seVolumeSlider != null)
         {
             seVolumeSlider.value = defaultSEVolume;
+            UpdateSEVolume(defaultSEVolume);
         }
     }
 

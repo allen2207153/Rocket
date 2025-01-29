@@ -54,7 +54,7 @@ MonoBehaviour:
   defaultSensitivity: 100
   bgmVolumeSlider: {fileID: 0}
   bgmVolumeText: {fileID: 0}
-  defaultBGMVolume: 0.5
+  defaultBGMVolume: 0.15
   seVolumeSlider: {fileID: 0}
   seVolumeText: {fileID: 0}
-  defaultSEVolume: 0.5
+  defaultSEVolume: 1
