@@ -1,30 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class BulletManager : MonoBehaviour
 {
-    public GameObject bulletPrefab; // 弾丸のプレハブ（通常の弾丸）
-    public GameObject stickyBulletPrefab; // 粘着弾丸のプレハブ
-    public GameObject gravityBulletPrefab; // 重力弾丸のプレハブ
+    public GameObject bulletPrefab; // 通常弾プレハブ
+    public GameObject stickyBulletPrefab; // 粘着弾プレハブ
+    public GameObject gravityBulletPrefab; // 重力弾プレハブ
     public Transform firePoint; // 弾丸発射位置
     public float bulletSpeed = 10f; // 弾丸の速度
     public float fireRate = 0.5f; // 発射間隔（秒）
-    public int maxBullets = 6; // 最大弾丸数
+    //public int maxBullets = 6; // 最大弾丸数
 
     private int currentBullets; // 現在の残り弾丸数
     private float nextFireTime = 0f; // 次に発射できる時間
     private enum BulletType { Normal, Sticky, Gravity } // 弾丸の種類
-    private BulletType currentBulletType = BulletType.Normal; // 現在選択されている弾丸の種類
+    private BulletType currentBulletType = BulletType.Normal; // 現在の弾丸タイプ
 
-    public TextMeshProUGUI bulletTextTMP; // 弾丸数を表示するための TextMeshPro UI
+    public Image bulletTypeImage; // 弾丸の種類を表示するUI画像
+    public Sprite normalBulletSprite; // 通常弾のアイコン
+    public Sprite stickyBulletSprite; // 粘着弾のアイコン
+    public Sprite gravityBulletSprite; // 重力弾のアイコン
 
-    public Light gunLight; // 銃に取り付けられた Light コンポーネント（Unity Editor で設定）
+    public Light gunLight; // 銃の光（エディタで設定）
 
     private void Start()
     {
-        currentBullets = maxBullets; // 初期弾丸数を設定
+        //currentBullets = maxBullets; // 初期の弾丸数を設定
         UpdateBulletUI();
 
         if (gunLight == null)
@@ -35,29 +38,25 @@ public class BulletManager : MonoBehaviour
 
     public void ShootBullet()
     {
-        if (currentBullets <= 0)
-        {
-            Debug.Log("弾丸がありません！リロードが必要です。");
-            return;
-        }
+        //if (currentBullets <= 0)
+        //{
+        //    Debug.Log("弾丸がありません！リロードしてください。");
+        //    return;
+        //}
 
         GameObject bulletToShoot = null;
-        string description = ""; // 子彈描述文字
 
         // 使用する弾丸の種類を決定
         switch (currentBulletType)
         {
             case BulletType.Normal:
                 bulletToShoot = bulletPrefab;
-                description = "通常弾：標準的な弾丸です。";
                 break;
             case BulletType.Sticky:
                 bulletToShoot = stickyBulletPrefab;
-                description = "粘着弾：ターゲットに粘着します。";
                 break;
             case BulletType.Gravity:
                 bulletToShoot = gravityBulletPrefab;
-                description = "重力弾：重力フィールドを発生させます。";
                 break;
         }
 
@@ -68,14 +67,14 @@ public class BulletManager : MonoBehaviour
         currentBullets--;
         Debug.Log("残り弾丸数: " + currentBullets);
 
-        // 更新 UI，包括目前子彈數量和種類描述
-        bulletTextTMP.text = "Bullet : " + currentBullets + "/" + maxBullets + "\n" + description;
+        // UI更新
+        UpdateBulletUI();
     }
 
     private void Reload()
     {
-        currentBullets = maxBullets;
-        Debug.Log("リロード完了。弾丸数がリセットされました: " + currentBullets);
+        //currentBullets = maxBullets;
+        Debug.Log("リロード完了。弾丸数リセット: " + currentBullets);
         UpdateBulletUI();
     }
 
@@ -87,10 +86,10 @@ public class BulletManager : MonoBehaviour
             nextFireTime = Time.time + fireRate;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    Reload();
+        //}
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -100,48 +99,31 @@ public class BulletManager : MonoBehaviour
 
     private void SwitchBulletType()
     {
+        // 弾丸タイプを切り替える
         currentBulletType = (BulletType)(((int)currentBulletType + 1) % System.Enum.GetValues(typeof(BulletType)).Length);
         Debug.Log(currentBulletType + " に切り替えました。");
 
-        // 切換槍枝類型時自動更新光源顏色及 UI
-        SwitchGunColor();
+        // UI更新
         UpdateBulletUI();
-    }
-
-    private void SwitchGunColor()
-    {
-        switch (currentBulletType)
-        {
-            case BulletType.Normal:
-                if (gunLight != null) gunLight.color = Color.white;
-                break;
-            case BulletType.Sticky:
-                if (gunLight != null) gunLight.color = Color.green;
-                break;
-            case BulletType.Gravity:
-                if (gunLight != null) gunLight.color = Color.magenta;
-                break;
-        }
     }
 
     private void UpdateBulletUI()
     {
-        string description = "";
-
-        // 現在の弾丸種類に応じて説明文を設定
+        // 弾丸の種類に応じてアイコンを変更
         switch (currentBulletType)
         {
             case BulletType.Normal:
-                description = "通常弾：標準的な弾丸です。";
+                bulletTypeImage.sprite = normalBulletSprite;
+                if (gunLight != null) gunLight.color = Color.white;
                 break;
             case BulletType.Sticky:
-                description = "粘着弾：ターゲットに粘着します。";
+                bulletTypeImage.sprite = stickyBulletSprite;
+                if (gunLight != null) gunLight.color = Color.green;
                 break;
             case BulletType.Gravity:
-                description = "重力弾：重力フィールドを発生させます。";
+                bulletTypeImage.sprite = gravityBulletSprite;
+                if (gunLight != null) gunLight.color = Color.magenta;
                 break;
         }
-
-        bulletTextTMP.text = "Bullet : " + currentBullets + "/" + maxBullets + "\n" + description;
     }
 }
