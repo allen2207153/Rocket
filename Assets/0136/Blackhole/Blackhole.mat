@@ -40,10 +40,10 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _QueueControl: 0
-    - _power: 5
+    - _power: 1
     - _strength: 0
     m_Colors:
-    - _Color: {r: 0.5882353, g: 0, b: 0.5943396, a: 1}
+    - _Color: {r: 6.4802475, g: 2.480598, b: 7.8490567, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5465248437582891009
 MonoBehaviour:

@@ -12,6 +12,8 @@ public class Gravity_Explosion_Effect : MonoBehaviour, IBullet
     public ExplosionEffect explosionEffect;  // 引用 ExplosionEffect 類別
     private BombSpawner bombSpawner;
     private Rigidbody rb;
+    public VfxManager _vfxManager;
+    
 
     private Vector3 initialPosition; // 初始位置
     public float maxDistance = 2f; // 最大射程
@@ -57,6 +59,7 @@ public class Gravity_Explosion_Effect : MonoBehaviour, IBullet
         if (explosionEffect != null)
         {
             explosionEffect.Explode_Gravity(transform.position);  // 生成特效
+            //_vfxManager.PlayVfx("vfx2_blackhole", this.direction);
         }
     }
 

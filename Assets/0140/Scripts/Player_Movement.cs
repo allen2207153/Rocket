@@ -406,18 +406,18 @@ public class Player_Movement : MonoBehaviour
         float mult = Mathf.Pow(10.0f, (float)digits);
         return Mathf.Round(value * mult) / mult;
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("GoalPlatform"))
-        {
-            Debug.Log("Player reached the goal platform!");
-            TimerController timerController = FindObjectOfType<TimerController>();
-            if (timerController != null)
-            {
-                timerController.OnReachGoal();
-            }
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("GoalPlatform"))
+    //    {
+    //        Debug.Log("Player reached the goal platform!");
+    //        TimerController timerController = FindObjectOfType<TimerController>();
+    //        if (timerController != null)
+    //        {
+    //            timerController.OnReachGoal();
+    //        }
+    //    }
+    //}
 }
 
 
