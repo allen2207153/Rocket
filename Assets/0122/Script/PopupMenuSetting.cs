@@ -125,6 +125,7 @@ public class PopupMenuSetting : MonoBehaviour
         if (sensitivitySlider != null)
         {
             sensitivitySlider.value = defaultSensitivity;
+            SoundManager.Instance.PlaySE("resetButton");
         }
     }
     #endregion

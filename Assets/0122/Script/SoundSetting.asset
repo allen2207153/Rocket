@@ -13,59 +13,114 @@ MonoBehaviour:
   m_Name: SoundSetting
   m_EditorClassIdentifier: 
   BGMList:
+  - tag: OPbgm
+    audioClip: {fileID: 8300000, guid: 37799f2b424744f4fb2f86c50ec91b6c, type: 3}
+    volume: 1
+    fadeTime: 0.5
+    isLoop: 1
   - tag: bgm1
-    audioClip: {fileID: 8300000, guid: db49a2bdf0e8946439e5fa2c282a1b93, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: 6e4637d2b108f46419cec5c9c8440f52, type: 3}
+    volume: 1
     fadeTime: 0.5
     isLoop: 1
   - tag: bgm2
-    audioClip: {fileID: 8300000, guid: 73adfe4a25d4f0a498fc1570095db7b8, type: 3}
+    audioClip: {fileID: 8300000, guid: 9553c96eb056e3043910b463aadcd641, type: 3}
     volume: 1
     fadeTime: 0.5
     isLoop: 1
   - tag: bgm3
-    audioClip: {fileID: 8300000, guid: c57c43bc82cd88d4380757779abd24b8, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: 2ac46e31b25f5174baeb241e1f4cb69b, type: 3}
+    volume: 1
     fadeTime: 0.5
     isLoop: 1
   - tag: bgm4
-    audioClip: {fileID: 8300000, guid: 6e4637d2b108f46419cec5c9c8440f52, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: 0386edf351ca9204ab31c166c1cc91ab, type: 3}
+    volume: 1
     fadeTime: 0.5
     isLoop: 1
   - tag: bgm5
-    audioClip: {fileID: 8300000, guid: 9553c96eb056e3043910b463aadcd641, type: 3}
-    volume: 0.5
-    fadeTime: 0.5
-    isLoop: 1
-  - tag: bgm7
-    audioClip: {fileID: 8300000, guid: 0386edf351ca9204ab31c166c1cc91ab, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: db49a2bdf0e8946439e5fa2c282a1b93, type: 3}
+    volume: 1
     fadeTime: 0.5
     isLoop: 1
   - tag: bgm6
-    audioClip: {fileID: 8300000, guid: 2ac46e31b25f5174baeb241e1f4cb69b, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: c57c43bc82cd88d4380757779abd24b8, type: 3}
+    volume: 1
     fadeTime: 0.5
     isLoop: 1
   SEList:
   - tag: hit1
-    audioClip: {fileID: 8300000, guid: 846883de3764f1e4b8ff0fe2b4c5af6c, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: 125d05c299eec7d4e87653a9bb7ee5b7, type: 3}
+    volume: 1
     fadeTime: 0
     isLoop: 0
   - tag: hit2
-    audioClip: {fileID: 8300000, guid: c8a6c83dc9eacd043b427ad6c9ac1b56, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: 5c326abb5d0c2cc4f8416be5e4b857af, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: hit3
+    audioClip: {fileID: 8300000, guid: fe17b06b53d2cdf43be917b2b4a2235d, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: bulletSwitch
+    audioClip: {fileID: 8300000, guid: 5fb5fb788fd07e34197c85cb8c73fcef, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: bulletReload
+    audioClip: {fileID: 8300000, guid: f6015da84c4b482418e34eae05547736, type: 3}
+    volume: 1
     fadeTime: 0
     isLoop: 0
   - tag: walk
-    audioClip: {fileID: 8300000, guid: bbd15ea7302235846b43deec941f5280, type: 3}
+    audioClip: {fileID: 8300000, guid: c1d50fac9e8441a40a97597cf37f1586, type: 3}
     volume: 0.5
     fadeTime: 0
     isLoop: 0
+  - tag: wallRun
+    audioClip: {fileID: 8300000, guid: 21488009ed9484a4a8656dd028be833a, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: speedDash
+    audioClip: {fileID: 8300000, guid: 8c4fa4653dac3fc419e713bdbf3d439d, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: breakWall
+    audioClip: {fileID: 8300000, guid: 7644258d88a2ffe49b3c2b6889d84595, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: select
+    audioClip: {fileID: 8300000, guid: b19009a892185c6439b569fc0117c7c6, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: gamestartButton
+    audioClip: {fileID: 8300000, guid: 80a46ff9fa1e4e4408aea9b19b95c600, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
   - tag: popupOpen
-    audioClip: {fileID: 8300000, guid: fc11996a1539b574a8694e4b4e7e3735, type: 3}
-    volume: 0.5
+    audioClip: {fileID: 8300000, guid: 5d8692580ce79654f87a05dcc159ba5c, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: resetButton
+    audioClip: {fileID: 8300000, guid: ae8fb2ec7b909dc4a95e14dedcd036a6, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: clearResult
+    audioClip: {fileID: 8300000, guid: 2ad10cb92a0557f40a27a5fefc61ed01, type: 3}
+    volume: 1
+    fadeTime: 0
+    isLoop: 0
+  - tag: changeScene
+    audioClip: {fileID: 8300000, guid: 03a1a8c1e284b5e4bb7259d6979db3ec, type: 3}
+    volume: 1
     fadeTime: 0
     isLoop: 0

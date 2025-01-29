@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b77c656fee08c49b8c3bc98b67792f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasExploded: 0
   explosionEffect: {fileID: 6373058815235917347}
 --- !u!114 &3016444395398326922
 MonoBehaviour:
@@ -211,4 +212,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxTag: vfx1
-  seTag: 
+  seTag: hit2

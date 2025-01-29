@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f095b4b8e3286428243e45b5339e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasExploded: 0
   isStuck: 0
   explosionEffect: {fileID: 1882402616861063505}
   maxDistance: 20
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxTag: vfx1
-  seTag: hit1
+  seTag: hit3
 --- !u!1 &3898328607788862428
 GameObject:
   m_ObjectHideFlags: 0

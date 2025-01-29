@@ -44,6 +44,7 @@ public class VfxManager : MonoBehaviour
             if (activeVfx == null)
             {
                 PlayScreenSpaceVfx("vfx_Concentration");
+                SoundManager.Instance?.PlaySE("speedDash");　　　//SEを再生する
             }
             isTriggered = true;
         }
@@ -63,6 +64,7 @@ public class VfxManager : MonoBehaviour
         if ((isWall || isSpeedDash) && !isTriggered)
         {
             PlayScreenSpaceVfx("vfx_Concentration");
+            SoundManager.Instance?.PlaySE("speedDash");　　　//SEを再生する
             isTriggered = true;
         }
         else if (!isWall && !isSpeedDash && isTriggered)

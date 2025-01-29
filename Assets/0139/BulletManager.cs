@@ -77,6 +77,8 @@ public class BulletManager : MonoBehaviour
         currentBullets = maxBullets;
         Debug.Log("リロード完了。弾丸数がリセットされました: " + currentBullets);
         UpdateBulletUI();
+
+        SoundManager.Instance?.PlaySE("bulletReload");　　　//SEを再生する
     }
 
     private void Update()
@@ -106,6 +108,8 @@ public class BulletManager : MonoBehaviour
         // 切換槍枝類型時自動更新光源顏色及 UI
         SwitchGunColor();
         UpdateBulletUI();
+
+        SoundManager.Instance?.PlaySE("bulletSwitch");　　　//SEを再生する
     }
 
     private void SwitchGunColor()
