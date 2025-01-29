@@ -80,6 +80,8 @@ public class PopupMenuSetting : MonoBehaviour
 
         // メニューを開きならゲームを一時停止
         Time.timeScale = isMenuOpen ? 0 : 1;
+
+        SoundManager.Instance?.PlaySE("popupOpen");
     }
 
     #endregion
