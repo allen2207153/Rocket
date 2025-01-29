@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3161651185667514174
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuKey: 111
-  menuPanel: {fileID: 0}
+  menuPanel: {fileID: 6871120980813838995}
   playerCamera: {fileID: 0}
   sensitivitySlider: {fileID: 0}
   sensitivityText: {fileID: 0}
@@ -55,3 +55,6 @@ MonoBehaviour:
   bgmVolumeSlider: {fileID: 0}
   bgmVolumeText: {fileID: 0}
   defaultBGMVolume: 0.5
+  seVolumeSlider: {fileID: 0}
+  seVolumeText: {fileID: 0}
+  defaultSEVolume: 0.5

@@ -28,9 +28,44 @@ MonoBehaviour:
     volume: 0.5
     fadeTime: 0.5
     isLoop: 1
+  - tag: bgm4
+    audioClip: {fileID: 8300000, guid: 6e4637d2b108f46419cec5c9c8440f52, type: 3}
+    volume: 0.5
+    fadeTime: 0.5
+    isLoop: 1
+  - tag: bgm5
+    audioClip: {fileID: 8300000, guid: 9553c96eb056e3043910b463aadcd641, type: 3}
+    volume: 0.5
+    fadeTime: 0.5
+    isLoop: 1
+  - tag: bgm7
+    audioClip: {fileID: 8300000, guid: 0386edf351ca9204ab31c166c1cc91ab, type: 3}
+    volume: 0.5
+    fadeTime: 0.5
+    isLoop: 1
+  - tag: bgm6
+    audioClip: {fileID: 8300000, guid: 2ac46e31b25f5174baeb241e1f4cb69b, type: 3}
+    volume: 0.5
+    fadeTime: 0.5
+    isLoop: 1
   SEList:
   - tag: hit1
     audioClip: {fileID: 8300000, guid: 846883de3764f1e4b8ff0fe2b4c5af6c, type: 3}
-    volume: 0
+    volume: 0.5
+    fadeTime: 0
+    isLoop: 0
+  - tag: hit2
+    audioClip: {fileID: 8300000, guid: c8a6c83dc9eacd043b427ad6c9ac1b56, type: 3}
+    volume: 0.5
+    fadeTime: 0
+    isLoop: 0
+  - tag: walk
+    audioClip: {fileID: 8300000, guid: bbd15ea7302235846b43deec941f5280, type: 3}
+    volume: 0.5
+    fadeTime: 0
+    isLoop: 0
+  - tag: popupOpen
+    audioClip: {fileID: 8300000, guid: fc11996a1539b574a8694e4b4e7e3735, type: 3}
+    volume: 0.5
     fadeTime: 0
     isLoop: 0

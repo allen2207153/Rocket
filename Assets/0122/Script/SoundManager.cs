@@ -4,14 +4,21 @@ using UnityEngine;
 //サウンド管理クラス
 public class SoundManager : MonoBehaviour
 {
-   public static SoundManager Instance { get; private set; }
+    public static SoundManager Instance { get; private set; }
 
-    private AudioSource audioSource;   //音を鳴らすためのコンポーネント
-    private AudioClip currentAudioClip;//最後に鳴らした音
+    private AudioClip currentAudioClip;
 
-    [SerializeField] private SoundSetting SoundSetting;  //サウンドデータ
-    [SerializeField] private string initialBGM = "bgm1";  //初始BGM
-    [SerializeField] private bool playBGMOnStart = true;  // 起動時にBGMを再生するかどうか?
+    [SerializeField] private SoundSetting SoundSetting;     //サウンドデータ
+    [SerializeField] private string initialBGM = "bgm1";    //初始BGM
+    [SerializeField] private bool playBGMOnStart = true;    //起動時にBGMを再生するかどうか?
+
+    private AudioSource bgmAudioSource;                     //BGM音を鳴らすためのコンポーネント
+    private AudioSource seAudioSource;                      //SE音を鳴らすためのコンポーネント
+
+    [SerializeField] private float bgmVolume = 0.5f;        //初始BGM音量
+    [SerializeField] private float seVolume = 0.5f;         //初始SE音量
+
+    private AudioClip currentBGMAudioClip;                  //最後に鳴らした音
 
     private void Awake()
     {
@@ -19,15 +26,33 @@ public class SoundManager : MonoBehaviour
       {
            Instance = this;
            DontDestroyOnLoad(gameObject);
+
+            bgmAudioSource = gameObject.AddComponent<AudioSource>();
+            seAudioSource = gameObject.AddComponent<AudioSource>();
+
+            //初始音量を設定する
+            bgmAudioSource.volume = bgmVolume;
+            bgmAudioSource.playOnAwake = false;
+
+            seAudioSource.volume = seVolume;
+            seAudioSource.playOnAwake = false;
         }
        else
         {
             Destroy(gameObject);
            return;
         }
-
-        audioSource = GetComponent<AudioSource>(); //同じゲームオブジェクトから取得
     }
+
+    private void Start()
+    {
+        //Instance.PlayBGM("bgm2");
+        if (playBGMOnStart && !string.IsNullOrEmpty(initialBGM))
+        {
+            PlayBGM(initialBGM);
+        }
+    }
+
 
     //SoundDataからAudioClipを取得する
     private AudioClip GetAudioClip_SE(string tag)
@@ -71,87 +96,138 @@ public class SoundManager : MonoBehaviour
     //音を鳴らす
     public void PlaySE(string tag)
     {
-        //AudioClipを取得する
-        currentAudioClip = GetAudioClip_SE(tag);
+        ////AudioClipを取得する
+        //currentAudioClip = GetAudioClip_SE(tag);
 
-        //サウンドデータがあるかを確認する
-        if (currentAudioClip == null) { Debug.Log("サウンドデータがありません"); return; }
+        ////サウンドデータがあるかを確認する
+        //if (currentAudioClip == null) { Debug.Log("サウンドデータがありません"); return; }
 
-        //サウンドを再生する
-        audioSource.PlayOneShot(currentAudioClip);
+        ////サウンドを再生する
+        //audioSource.PlayOneShot(currentAudioClip);
+
+
+        if (SoundSetting == null) return;                                               //サウンドデータがあるかを確認する
+
+        Sound seData = SoundSetting.Get_SEList.Find(se => se.tag == tag);               //AudioClipを取得する
+        if (seData.audioClip != null)
+        {
+            seAudioSource.PlayOneShot(seData.audioClip, seVolume * seData.volume);      //サウンドを再生する
+        }
     }
     public void PlayBGM(string tag)
     {
-        // 保存當前音量設定
-        float currentVolume = audioSource.volume;
+        //// 保存當前音量設定
+        //float currentVolume = audioSource.volume;
 
-        //AudioClipを取得する
-        currentAudioClip = GetAudioClip_BGM(tag);
+        ////AudioClipを取得する
+        //currentAudioClip = GetAudioClip_BGM(tag);
 
-        //サウンドデータがあるかを確認する
-        if (currentAudioClip == null) { Debug.Log("サウンドデータがありません"); return; }
+        ////サウンドデータがあるかを確認する
+        //if (currentAudioClip == null) { Debug.Log("サウンドデータがありません"); return; }
         
-        //現在のBGMを停止
-        audioSource.Stop();
+        ////現在のBGMを停止
+        //audioSource.Stop();
 
-        //BGMの設定
-        audioSource.clip = currentAudioClip;
+        ////BGMの設定
+        //audioSource.clip = currentAudioClip;
 
-        //Sound設定を取得
-        foreach (var Sound in SoundSetting.Get_BGMList)
+        ////Sound設定を取得
+        //foreach (var Sound in SoundSetting.Get_BGMList)
+        //{
+        //    if (Sound.tag == tag)
+        //    {
+        //        //audioSource.volume = Sound.volume;
+        //        audioSource.loop = Sound.isLoop;
+        //        break;
+        //    }
+        //}
+
+        ////BGMを再生
+        //audioSource.volume = currentVolume;
+        //audioSource.Play();
+
+
+        if (SoundSetting == null) return;
+        //AudioClipを取得する
+        Sound bgmData = SoundSetting.Get_BGMList.Find(bgm => bgm.tag == tag);
+        if (bgmData.audioClip != null)
         {
-            if (Sound.tag == tag)
+            if (currentBGMAudioClip != bgmData.audioClip)
             {
-                //audioSource.volume = Sound.volume;
-                audioSource.loop = Sound.isLoop;
-                break;
+                bgmAudioSource.Stop();                          //現在のBGMを停止
+                //BGMの設定
+                currentBGMAudioClip = bgmData.audioClip;        
+                bgmAudioSource.clip = currentBGMAudioClip;
+                bgmAudioSource.loop = bgmData.isLoop;
+                bgmAudioSource.volume = bgmVolume * bgmData.volume;
+
+                bgmAudioSource.Play();
             }
         }
-
-        //BGMを再生
-        audioSource.volume = currentVolume;
-        audioSource.Play();
     }
 
     // BGMを停止
     public void StopBGM()
     {
-        audioSource.Stop();
+        // audioSource.Stop();
+
+        if (bgmAudioSource != null && bgmAudioSource.isPlaying)
+        {
+            bgmAudioSource.Stop();
+            currentBGMAudioClip = null;
+        }
     }
 
-    // BGMを一時停止
-    public void PauseBGM()
+    public void StopSE()
     {
-        audioSource.Pause();
+        if (seAudioSource != null && seAudioSource.isPlaying)
+        {
+            seAudioSource.Stop();
+        }
     }
 
-    // BGMを再開
-    public void ResumeBGM()
-    {
-        audioSource.UnPause();
-    }
+
+    //// BGMを一時停止
+    //public void PauseBGM()
+    //{
+    //    audioSource.Pause();
+    //}
+
+    //// BGMを再開
+    //public void ResumeBGM()
+    //{
+    //    audioSource.UnPause();
+    //}
 
     public void SetBGMVolume(float volume)
     {
-        if (audioSource != null)
+        //if (audioSource != null)
+        //{
+        //    audioSource.volume = volume;
+        //}
+
+        bgmVolume = volume;
+        if (bgmAudioSource != null)
         {
-            audioSource.volume = volume;
+            bgmAudioSource.volume = volume;
+        }
+    }
+    public void SetSEVolume(float volume)
+    {
+        seVolume = volume;
+        if (seAudioSource != null)
+        {
+            seAudioSource.volume = volume;
         }
     }
 
-    // 現在のBGMの音量を取得する
-    public float GetBGMVolume()
-    {
-        return audioSource != null ? audioSource.volume : 0f;
-    }
+
+    //// 現在のBGMの音量を取得する
+    //public float GetBGMVolume()
+    //{
+    //    return audioSource != null ? audioSource.volume : 0f;
+    //}
 
 
-    private void Start()
-    {
-        //Instance.PlayBGM("bgm2");
-        if (playBGMOnStart && !string.IsNullOrEmpty(initialBGM))
-        {
-            PlayBGM(initialBGM);
-        }
-    }
+    
 }
