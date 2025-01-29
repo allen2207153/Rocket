@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3588996399893961862}
   - component: {fileID: 8526270492265790305}
   - component: {fileID: 6905725369362036105}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: vfx_Concentration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 14
+      value: 13
       mode: 0
       spread: 0
       speed:
