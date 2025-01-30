@@ -76,6 +76,8 @@ public class BulletManager : MonoBehaviour
         //currentBullets = maxBullets;
         Debug.Log("リロード完了。弾丸数リセット: " + currentBullets);
         UpdateBulletUI();
+
+        SoundManager.Instance?.PlaySE("bulletReload");　　　//SEを再生する
     }
 
     private void Update()
@@ -105,6 +107,8 @@ public class BulletManager : MonoBehaviour
 
         // UI更新
         UpdateBulletUI();
+
+        SoundManager.Instance?.PlaySE("bulletSwitch");　　　//SEを再生する
     }
 
     private void UpdateBulletUI()

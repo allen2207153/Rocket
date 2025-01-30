@@ -41,7 +41,11 @@ public class VfxManager : MonoBehaviour
 
         if (keyPressed && !isTriggered)
         {
-            PlayScreenSpaceVfx("vfx_Concentration");
+            if (activeVfx == null)
+            {
+                PlayScreenSpaceVfx("vfx_Concentration");
+                SoundManager.Instance?.PlaySE("speedDash");　　　//SEを再生する
+            }
             isTriggered = true;
         }
         else if (!keyPressed && isTriggered)
@@ -60,6 +64,7 @@ public class VfxManager : MonoBehaviour
         if ((isWall || isSpeedDash) && !isTriggered)
         {
             PlayScreenSpaceVfx("vfx_Concentration");
+            SoundManager.Instance?.PlaySE("speedDash");　　　//SEを再生する
             isTriggered = true;
         }
         else if (!isWall && !isSpeedDash && isTriggered)
@@ -76,7 +81,10 @@ public class VfxManager : MonoBehaviour
             Debug.LogError("VfxSetting 又は PlayerCamera 割り当てられていません");
             return;
         }
-
+        if (activeVfx != null)
+        {
+            StopAndDestroyVfx();
+        }
         VFX vfxToPlay = vfxSetting.Get_VFXList.Find(vfx => vfx.tag == tag);
 
         if (vfxToPlay.VfxPrefab != null)
@@ -86,14 +94,21 @@ public class VfxManager : MonoBehaviour
             Quaternion spawnRotation = playerCamera.transform.rotation;
 
             // カメラ回転するとVFX生成
-            GameObject instantiatedVfx = Instantiate(vfxToPlay.VfxPrefab, spawnPosition, spawnRotation);
-            instantiatedVfx.transform.parent = playerCamera.transform;
+            //  GameObject instantiatedVfx = Instantiate(vfxToPlay.VfxPrefab, spawnPosition, spawnRotation);
+            // instantiatedVfx.transform.parent = playerCamera.transform;
+            activeVfx = Instantiate(vfxToPlay.VfxPrefab, spawnPosition, spawnRotation); // Changed this line
+            activeVfx.transform.parent = playerCamera.transform;
 
             // VFXがカメラの前に表示のを確保
-            instantiatedVfx.transform.localPosition = new Vector3(0, 0, 2f);
-            instantiatedVfx.transform.localRotation = Quaternion.identity;
+            // instantiatedVfx.transform.localPosition = new Vector3(0, 0, 2f);
+            // instantiatedVfx.transform.localRotation = Quaternion.identity;
+            // ParticleSystem ps = instantiatedVfx.GetComponent<ParticleSystem>();
 
-            ParticleSystem ps = instantiatedVfx.GetComponent<ParticleSystem>();
+            activeVfx.transform.localPosition = new Vector3(0, 0, 2f);
+            activeVfx.transform.localRotation = Quaternion.identity;
+
+            ParticleSystem ps = activeVfx.GetComponent<ParticleSystem>();
+
             if (ps != null)
             {
                 var main = ps.main;
@@ -105,7 +120,7 @@ public class VfxManager : MonoBehaviour
                 ps.Play();
             }
         }
-    
+
         else
         {
             Debug.LogWarning($"タグ '{tag}' の VFX が見つかりませんでした。");
@@ -116,17 +131,19 @@ public class VfxManager : MonoBehaviour
     {
         if (activeVfx != null)
         {
-            var ps = activeVfx.GetComponent<ParticleSystem>();
+            ParticleSystem ps = activeVfx.GetComponent<ParticleSystem>();
             if (ps != null)
             {
                 ps.Stop(true); // 止まる
             }
-            Destroy(activeVfx);
-            activeVfx = null;
+             Destroy(activeVfx);
+             activeVfx = null;
         }
     }
 
-    private void OnDisable()
+
+
+        private void OnDisable()
     {
         StopAndDestroyVfx();
     }

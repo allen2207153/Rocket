@@ -152,7 +152,6 @@ MonoBehaviour:
   hasExploded: 0
   isStuck: 0
   explosionEffect: {fileID: 1882402616861063505}
-  _vfxManager: {fileID: 0}
   maxDistance: 20
 --- !u!114 &9101690542875253585
 MonoBehaviour:
@@ -179,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd9e66da788f5e4a96737c1da0a0851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxTag: vfx2_blackhole
-  seTag: hit1
+  vfxTag: vfx1
+  seTag: hit3
 --- !u!1 &3898328607788862428
 GameObject:
   m_ObjectHideFlags: 0

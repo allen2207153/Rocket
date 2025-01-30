@@ -142,3 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoundSetting: {fileID: 11400000, guid: d70f997b9cca9fb428b8a9f6e2cb02a3, type: 2}
+  initialBGM: bgm1
+  playBGMOnStart: 1
+  bgmVolume: 0.15
+  seVolume: 1

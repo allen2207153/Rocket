@@ -20,7 +20,12 @@ public class PopupMenuSetting : MonoBehaviour
     [Header("Sound Settings")]       //BGM音量調整
     [SerializeField] private Slider bgmVolumeSlider;
     [SerializeField] private TextMeshProUGUI bgmVolumeText;
-    [SerializeField] private float defaultBGMVolume = 0.5f;           //BGM音量初期値0~1（0%~100%）
+    [SerializeField] private float defaultBGMVolume = 0.15f;          //BGM音量初期値0~1（0%~100%）
+   
+    [SerializeField] private Slider seVolumeSlider;  
+    [SerializeField] private TextMeshProUGUI seVolumeText;
+    [SerializeField] private float defaultSEVolume = 1.0f;           //SE音量初期値0~1（0%~100%）
+    
     private bool isMenuOpen = false;
 
     #region Unity Lifecycle
@@ -80,6 +85,8 @@ public class PopupMenuSetting : MonoBehaviour
 
         // メニューを開きならゲームを一時停止
         Time.timeScale = isMenuOpen ? 0 : 1;
+
+        SoundManager.Instance?.PlaySE("popupOpen");
     }
 
     #endregion
@@ -118,6 +125,7 @@ public class PopupMenuSetting : MonoBehaviour
         if (sensitivitySlider != null)
         {
             sensitivitySlider.value = defaultSensitivity;
+            SoundManager.Instance.PlaySE("resetButton");
         }
     }
     #endregion
@@ -132,6 +140,14 @@ public class PopupMenuSetting : MonoBehaviour
             bgmVolumeSlider.maxValue = 1f;
             bgmVolumeSlider.onValueChanged.AddListener(UpdateBGMVolume);
         }
+
+        if (seVolumeSlider != null)
+        {
+            seVolumeSlider.minValue = 0f;
+            seVolumeSlider.maxValue = 1f;
+            seVolumeSlider.onValueChanged.AddListener(UpdateSEVolume);
+        }
+
     }
 
     public void UpdateBGMVolume(float value)
@@ -150,13 +166,40 @@ public class PopupMenuSetting : MonoBehaviour
         }
     }
 
+    public void UpdateSEVolume(float value)
+    {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.SetSEVolume(value);  
+
+            if (seVolumeText != null)
+            {
+                seVolumeText.text = $"{(value * 100):F0}%";
+            }
+
+            PlayerPrefs.SetFloat("SEVolume", value);
+            PlayerPrefs.Save();
+        }
+    }
+
     public void ResetBGMVolumeToDefault()
     {
         if (bgmVolumeSlider != null)
         {
             bgmVolumeSlider.value = defaultBGMVolume;
+            UpdateBGMVolume(defaultBGMVolume);
         }
     }
+
+    public void ResetSEVolumeToDefault()
+    {
+        if (seVolumeSlider != null)
+        {
+            seVolumeSlider.value = defaultSEVolume;
+            UpdateSEVolume(defaultSEVolume);
+        }
+    }
+
 
     #endregion
 
@@ -178,6 +221,14 @@ public class PopupMenuSetting : MonoBehaviour
             bgmVolumeSlider.value = savedBGMVolume;
         }
         UpdateBGMVolume(savedBGMVolume);
+
+        float savedSEVolume = PlayerPrefs.GetFloat("SEVolume", defaultSEVolume);
+        if (seVolumeSlider != null)
+        {
+            seVolumeSlider.value = savedSEVolume;
+        }
+        UpdateSEVolume(savedSEVolume);
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
