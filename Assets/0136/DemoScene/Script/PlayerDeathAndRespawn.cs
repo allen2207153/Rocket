@@ -30,11 +30,16 @@ public class PlayerDeathAndRespawn : MonoBehaviour
     {
         if (isCounting)
         {
-            timer += Time.deltaTime; // 経過時間を計算
-            int seconds = Mathf.FloorToInt(timer); // 秒数を計算
-            int milliseconds = Mathf.FloorToInt((timer - seconds) * 100); // ミリ秒を計算
-            timerText.text = string.Format("{0:0}:{1:00}", seconds, milliseconds); // 時間を表示
+            timer += Time.deltaTime; 
+
+            int minutes = Mathf.FloorToInt(timer / 60); 
+            int seconds = Mathf.FloorToInt(timer % 60); 
+            int milliseconds = Mathf.FloorToInt((timer * 100) % 100); 
+
+    
+            timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
         }
+
 
         // プレイヤーが死亡している場合、Enterキーを押すとリスタート
         if (deathUI.activeSelf && Input.GetKeyDown(KeyCode.Return))
