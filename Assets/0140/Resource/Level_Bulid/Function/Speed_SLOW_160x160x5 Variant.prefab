@@ -91,6 +91,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7400698410640346895}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5878699870827602295}
   m_SourcePrefab: {fileID: 100100000, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
 --- !u!1 &1550129735470441894 stripped
 GameObject:
@@ -118,3 +121,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 16, y: 0.5, z: 16}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &5878699870827602295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550129735470441894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4611e012b4885524f976b50d98ebda3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMultiplier: 1.5
+  dashForce: 100
+  dashDuration: 0.2
+  continuousDash: 0
+  dashCooldown: 1
+  visibleTime: 2
+  invisibleTime: 1
+  startVisible: 1
+  fadeSpeed: 2
+  timeToFall: 1
+  timeToRespawn: 2

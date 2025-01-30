@@ -90,15 +90,47 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7400698410640346895}
+      addedObject: {fileID: 6187708243633084039}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4569895016467241531}
+    - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3305021938702331584}
   m_SourcePrefab: {fileID: 100100000, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
 --- !u!1 &1550129735470441894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
   m_PrefabInstance: {fileID: 7264175329744396334}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7400698410640346895
-BoxCollider:
+--- !u!114 &6187708243633084039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550129735470441894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7459aff6cb26049ab000574e1c984c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutCascades: 10
+  ExplodeForce: 4000
+--- !u!114 &4569895016467241531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550129735470441894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c620ce26b29974e9ee6869c66818ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &3305021938702331584
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,6 +147,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 16, y: 0.5, z: 16}
-  m_Center: {x: 0, y: 0.25, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}

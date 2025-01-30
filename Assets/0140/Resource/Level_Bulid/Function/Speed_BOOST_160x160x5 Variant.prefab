@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       propertyPath: m_ImportantGI
       value: 1
       objectReference: {fileID: 0}
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       propertyPath: m_TagString
-      value: SpeedBoost
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       propertyPath: m_Layer
@@ -90,37 +94,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7400698410640346895}
+      addedObject: {fileID: 4372776005450055815}
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4372776005450055815}
+      addedObject: {fileID: 2677046960096557463}
   m_SourcePrefab: {fileID: 100100000, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
 --- !u!1 &1550129735470441894 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
   m_PrefabInstance: {fileID: 7264175329744396334}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7400698410640346895
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550129735470441894}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 16, y: 0.5, z: 16}
-  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &4372776005450055815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,3 +127,24 @@ MonoBehaviour:
   fadeSpeed: 2
   timeToFall: 1
   timeToRespawn: 2
+--- !u!65 &2677046960096557463
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550129735470441894}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 16, y: 0.5, z: 16}
+  m_Center: {x: 0, y: 0.25, z: 0}
