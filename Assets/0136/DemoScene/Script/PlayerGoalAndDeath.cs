@@ -48,13 +48,11 @@ public class PlayerGoalAndDeath : MonoBehaviour
 
     private void Update()
     {
-        // 如果玩家死亡，按下 Enter 键重置游戏
         if (isPlayerDead && Input.GetKeyDown(KeyCode.Return))
         {
             ResetAllObjects();
         }
 
-        // 正常计时
         if (isCountingUp)
         {
             timer += Time.deltaTime;
@@ -65,10 +63,17 @@ public class PlayerGoalAndDeath : MonoBehaviour
 
             timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
 
-            // 根据时间更新 Cube 的显示
             UpdateCubesBasedOnTime();
         }
+
+        // ✅ 按下 ESC 让鼠标可见
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
+
 
     private void UpdateCubesBasedOnTime()
     {
@@ -117,9 +122,23 @@ public class PlayerGoalAndDeath : MonoBehaviour
 
         resultTimeText.text = string.Format("Time : {0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
 
-        // 锁住玩家的移动
+        // ✅ 让鼠标可见，并解除锁定
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // ✅ 停止游戏，防止角色继续移动
+        Time.timeScale = 0f;
+
+        // ✅ 禁用玩家控制脚本（如果有）
+        var playerController = GetComponent<Player_Movement>(); // 替换为你的控制脚本
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+
         LockPlayerMovement();
     }
+
 
     private void LockPlayerMovement()
     {
@@ -145,32 +164,36 @@ public class PlayerGoalAndDeath : MonoBehaviour
         }
     }
 
-    private void ResetAllObjects()
+    public void ResetAllObjects()
     {
-        // 重置玩家位置和旋转
         transform.position = respawnPoint != null ? respawnPoint.position : initialPlayerPosition;
         transform.rotation = initialPlayerRotation;
 
         timer = 0f;
         isCountingUp = true;
-
-        // 隐藏所有 UI
         resultUI.SetActive(false);
         resultTimeText.gameObject.SetActive(false);
         deathUI.SetActive(false);
 
-        // 隐藏 Cube 的 UI
-        if (cubeRawImage1 != null) cubeRawImage1.gameObject.SetActive(false);
-        if (cubeRawImage2 != null) cubeRawImage2.gameObject.SetActive(false);
+        // ✅ 恢复鼠标锁定
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         Time.timeScale = 1f;
         isPlayerDead = false;
+
+        var playerController = GetComponent<Player_Movement>(); // 替换为你的控制脚本
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
 
         if (playerRigidbody != null)
         {
             playerRigidbody.velocity = Vector3.zero;
             playerRigidbody.angularVelocity = Vector3.zero;
-            playerRigidbody.isKinematic = false; // 恢复物理效果
+            playerRigidbody.isKinematic = false;
         }
     }
+
 }

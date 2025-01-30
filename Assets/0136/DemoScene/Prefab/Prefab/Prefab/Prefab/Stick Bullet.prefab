@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 3016444395398326922}
   m_Layer: 9
   m_Name: Stick Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b77c656fee08c49b8c3bc98b67792f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasExploded: 0
   explosionEffect: {fileID: 6373058815235917347}
 --- !u!114 &3016444395398326922
 MonoBehaviour:
