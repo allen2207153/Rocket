@@ -127,7 +127,7 @@ public class PlayerGoalAndDeath : MonoBehaviour
         Cursor.visible = true;
 
         // ✅ 停止游戏，防止角色继续移动
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
 
         // ✅ 禁用玩家控制脚本（如果有）
         var playerController = GetComponent<Player_Movement>(); // 替换为你的控制脚本
