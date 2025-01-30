@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8308043696686739360}
   m_Layer: 0
   m_Name: Destroy Block
-  m_TagString: Wall
+  m_TagString: Destroy Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1804819863386143909
 MeshFilter:
