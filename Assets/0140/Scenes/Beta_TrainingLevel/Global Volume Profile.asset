@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   skipIterations:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   threshold:
     m_OverrideState: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   downscale:
     m_OverrideState: 0
@@ -41,11 +41,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 6
   dirtTexture:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {fileID: 0}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
 --- !u!114 &-2085704525383488589
 MonoBehaviour:
@@ -70,7 +70,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 100
   enableGround:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   groundHeight:
     m_OverrideState: 0
@@ -94,13 +94,13 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   enableAdditionalLightsContribution:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   maxSteps:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 128
   blurIterations:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2
   enabled:
     m_OverrideState: 1
@@ -135,13 +135,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   shadows:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: -1}
   midtones:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}
   highlights:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 1}
   shadowsStart:
     m_OverrideState: 1

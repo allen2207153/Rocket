@@ -41,7 +41,7 @@ Transform:
   - {fileID: 1805655763269085287}
   - {fileID: 1402495724015245730}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5265996439236557437
 Rigidbody:
@@ -82,20 +82,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c686cd88760aad4d9af9f1970a25efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 25
-  sprintSpeed: 35
-  slideSpeed: 35
+  walkSpeed: 30
+  sprintSpeed: 40
+  slideSpeed: 50
   wallrunSpeed: 20
   climbSpeed: 5
   vaultSpeed: 15
   airMinSpeed: 20
-  dashSpeed: 50
-  dashSpeedChangeFactor: 50
-  maxYSpeed: 50
+  dashSpeed: 100
+  dashSpeedChangeFactor: 100
+  maxYSpeed: 100
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   groundDrag: 5
-  jumpForce: 25
+  jumpForce: 30
   jumpCooldown: 1
   airMultiplier: 0.3
   crouchSpeed: 3.5
