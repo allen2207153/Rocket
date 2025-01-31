@@ -53,6 +53,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7635826562936255635, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: a6156b021e5bc344baddcb9fce2c905a, type: 3}
       propertyPath: m_ImportantGI
       value: 1
       objectReference: {fileID: 0}

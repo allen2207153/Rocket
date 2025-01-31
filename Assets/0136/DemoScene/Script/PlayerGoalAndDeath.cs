@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerGoalAndDeath : MonoBehaviour
 {
@@ -19,11 +20,13 @@ public class PlayerGoalAndDeath : MonoBehaviour
     private bool isPlayerDead = false;         // 玩家是否死亡
     private Rigidbody playerRigidbody;         // 玩家刚体
 
-    private Vector3 initialPlayerPosition;     // 玩家初始位置
-    private Quaternion initialPlayerRotation;  // 玩家初始旋转
-    [SerializeField]private int resulttime_gold;
+    [SerializeField] private int resulttime_gold;
     [SerializeField] private int resulttime_silver;
     [SerializeField] private int resulttime_bronze;
+
+    private Vector3 initialPlayerPosition;     // 玩家初始位置
+    private Quaternion initialPlayerRotation;  // 玩家初始旋转
+
     private void Start()
     {
         // 初始化 UI
@@ -42,8 +45,16 @@ public class PlayerGoalAndDeath : MonoBehaviour
         }
 
         // 记录玩家初始位置和旋转
-        initialPlayerPosition = transform.position;
-        initialPlayerRotation = transform.rotation;
+        if (respawnPoint != null)
+        {
+            initialPlayerPosition = respawnPoint.position;
+            initialPlayerRotation = respawnPoint.rotation;
+        }
+        else
+        {
+            initialPlayerPosition = transform.position;
+            initialPlayerRotation = transform.rotation;
+        }
     }
 
     private void Update()
@@ -66,7 +77,6 @@ public class PlayerGoalAndDeath : MonoBehaviour
             UpdateCubesBasedOnTime();
         }
 
-        // ✅ 按下 ESC 让鼠标可见
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -74,37 +84,27 @@ public class PlayerGoalAndDeath : MonoBehaviour
         }
     }
 
-
     private void UpdateCubesBasedOnTime()
     {
         if (timer <= resulttime_gold)
         {
-            // 显示第一个 Cube，隐藏第二个
             if (cubeRawImage1 != null) cubeRawImage1.gameObject.SetActive(true);
             if (cubeRawImage2 != null) cubeRawImage2.gameObject.SetActive(false);
         }
-        else if (timer > resulttime_gold && timer <= resulttime_silver)
-        {
-            // 显示第二个 Cube，隐藏第一个
-            if (cubeRawImage1 != null) cubeRawImage1.gameObject.SetActive(false);
-            if (cubeRawImage2 != null) cubeRawImage2.gameObject.SetActive(true);
-        }
         else
         {
-            // 超过 50 秒后，隐藏所有 Cube
-            if (cubeRawImage1 != null) cubeRawImage1.gameObject.SetActive(false);
-            if (cubeRawImage2 != null) cubeRawImage2.gameObject.SetActive(false);
+            cubeRawImage1.gameObject.SetActive(false);
+            cubeRawImage2.gameObject.SetActive(true);
         }
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("GoalPlatform"))
         {
             OnReachGoal();
         }
-        else if (collision.gameObject.CompareTag("DeathPlatform"))
+        if (collision.gameObject.CompareTag("DeathPlatform"))
         {
             Die();
         }
@@ -112,7 +112,7 @@ public class PlayerGoalAndDeath : MonoBehaviour
 
     private void OnReachGoal()
     {
-        isCountingUp = false; // 停止计时
+        isCountingUp = false;
         resultUI.SetActive(true);
         resultTimeText.gameObject.SetActive(true);
 
@@ -122,15 +122,10 @@ public class PlayerGoalAndDeath : MonoBehaviour
 
         resultTimeText.text = string.Format("Time : {0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
 
-        // ✅ 让鼠标可见，并解除锁定
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // ✅ 停止游戏，防止角色继续移动
-        //Time.timeScale = 0f;
-
-        // ✅ 禁用玩家控制脚本（如果有）
-        var playerController = GetComponent<Player_Movement>(); // 替换为你的控制脚本
+        var playerController = GetComponent<Player_Movement>();
         if (playerController != null)
         {
             playerController.enabled = false;
@@ -138,7 +133,6 @@ public class PlayerGoalAndDeath : MonoBehaviour
 
         LockPlayerMovement();
     }
-
 
     private void LockPlayerMovement()
     {
@@ -166,34 +160,15 @@ public class PlayerGoalAndDeath : MonoBehaviour
 
     public void ResetAllObjects()
     {
-        transform.position = respawnPoint != null ? respawnPoint.position : initialPlayerPosition;
-        transform.rotation = initialPlayerRotation;
+        Debug.Log("重新加载场景");
 
-        timer = 0f;
-        isCountingUp = true;
-        resultUI.SetActive(false);
-        resultTimeText.gameObject.SetActive(false);
-        deathUI.SetActive(false);
-
-        // ✅ 恢复鼠标锁定
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
+        // **恢复 TimeScale，防止暂停状态影响新场景**
         Time.timeScale = 1f;
-        isPlayerDead = false;
 
-        var playerController = GetComponent<Player_Movement>(); // 替换为你的控制脚本
-        if (playerController != null)
-        {
-            playerController.enabled = true;
-        }
-
-        if (playerRigidbody != null)
-        {
-            playerRigidbody.velocity = Vector3.zero;
-            playerRigidbody.angularVelocity = Vector3.zero;
-            playerRigidbody.isKinematic = false;
-        }
+        // **重新加载当前场景**
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-}
+   
+    }
+

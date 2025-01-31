@@ -37,7 +37,7 @@ Transform:
   m_Children:
   - {fileID: 2071196078721351374}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &223447205908433815
 MeshFilter:
@@ -152,6 +152,7 @@ MonoBehaviour:
   hasExploded: 0
   isStuck: 0
   explosionEffect: {fileID: 1882402616861063505}
+  _vfxManager: {fileID: 0}
   maxDistance: 20
 --- !u!114 &9101690542875253585
 MonoBehaviour:
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd9e66da788f5e4a96737c1da0a0851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxTag: vfx1
+  vfxTag: vfx2_blackhole
   seTag: hit3
 --- !u!1 &3898328607788862428
 GameObject:

@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/0136/111Beta_TrainingLevel.unity
     guid: 2aecb974606f32e4a88ed031c702a98f
+  - enabled: 1
+    path: Assets/0136/Stage1.unity
+    guid: 80c9319e5a91ecf44bf4903740111f1e
+  - enabled: 1
+    path: Assets/0136/Stage2.unity
+    guid: ae51e47ac3a0e044caf17826c45a49ce
   m_configObjects: {}

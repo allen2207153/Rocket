@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock005 (1) Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c2640d54edf5a6b4183bf690fa8148a6, type: 3}
+      propertyPath: m_TagString
+      value: Silver
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2640d54edf5a6b4183bf690fa8148a6, type: 3}
       propertyPath: m_RootOrder
       value: 6
